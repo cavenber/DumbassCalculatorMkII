@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DumbassCalculatorMk2</string>
+    <string name="dumbass_calculator">Dumbass Calculator</string>
+    <string name="please_select_a_program">Please select a program:</string>
+    <string name="arithmetic_operation">Arithmetic Operation</string>
+    <string name="quadratic_equation">Quadratic Equation</string>
+</resources>
