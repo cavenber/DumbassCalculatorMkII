@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.DumbassCalculatorMk2" parent="Base.Theme.DumbassCalculatorMk2" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:fontFamily">@font/milky_vintage</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>

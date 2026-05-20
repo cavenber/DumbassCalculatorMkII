@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,67 +8,47 @@
     android:background="@color/beige"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/dumbass_calculator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:background="@color/dark_brown"
-        android:textColor="@color/light_beige"
-        android:fontFamily="@font/milky_vintage"
-        android:textSize="30sp"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/milky_vintage"
-        android:text="@string/please_select_a_program"
-        android:textColor="@color/dark_brown"
-        android:textSize="30sp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginVertical="200dp"
-        android:layout_marginHorizontal="30dp">
+        android:layout_marginTop="?attr/actionBarSize">
 
-        <Button
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/brown"
-            android:text="@string/arithmetic_operation"
-            android:textColor="@color/light_beige"
-            android:fontFamily="@font/milky_vintage"
-            android:textSize="20sp"
-            android:id="@+id/program1"/>
+            android:background="@color/dark_brown"
+            app:title="@string/title"
+            app:titleTextColor="@color/light_beige"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tv_snv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/brown"
-            android:text="@string/quadratic_equation"
-            android:textColor="@color/light_beige"
-            android:fontFamily="@font/milky_vintage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:textSize="20sp"
-            android:id="@+id/program2"/>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="@color/brown"
+            android:fontFamily="@font/milky_vintage"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nv_side"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:paddingTop="40dp"
+        app:menu="@menu/side_tabs"
+        android:fitsSystemWindows="true"
+        android:background="@color/light_beige"
+        app:itemTextColor="@color/dark_brown"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
