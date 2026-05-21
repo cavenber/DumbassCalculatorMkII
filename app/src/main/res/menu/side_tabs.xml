@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/snv_arithmetic_operation"
-        android:title="Arithmetic Operation" />
+        android:title="@string/arithmetic_operation" />
 
     <item
         android:id="@+id/snv_quadratic_equation"
-        android:title="Quadratic Equation" />
+        android:title="@string/quadratic_equation" />
 
 </menu>

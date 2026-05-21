@@ -3,12 +3,12 @@
     <style name="Base.Theme.DumbassCalculatorMk2" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/milky_vintage</item>
     </style>
 
     <style name="Theme.DumbassCalculatorMk2" parent="Base.Theme.DumbassCalculatorMk2" />
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:fontFamily">@font/milky_vintage</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:textAlignment">center</item>
+
+    <style name="Theme.DumbassCalculatorMk2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>

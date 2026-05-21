@@ -1,13 +1,11 @@
 package com.example.dumbasscalculatormk2
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.TextView
-
+import android.view.View
+import android.view.ViewStub
+import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.NonNull
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -21,10 +19,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
 
     lateinit var nv_side: NavigationView
-    lateinit var tv_snv: TextView
 
     lateinit var toolbar: Toolbar
     lateinit var toggle: ActionBarDrawerToggle
+
+    private lateinit var programContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.main)
 
         nv_side = findViewById(R.id.nv_side)
-        tv_snv = findViewById(R.id.tv_snv)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -48,8 +46,18 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        programContainer = findViewById(R.id.program_container)
+        showLayout(R.layout.activity_arithmetic_operation)
+
         nv_side.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { item ->
-            tv_snv.text=item.title // todo: modify this to allow for the change of activities
+            when (item.itemId) {
+                R.id.snv_arithmetic_operation -> {
+                    showLayout(R.layout.activity_arithmetic_operation)
+                }
+                R.id.snv_quadratic_equation -> {
+                    showLayout(R.layout.activity_quadratic_equation)
+                }
+            }
             drawerLayout.closeDrawers()
             true
         })
@@ -60,5 +68,11 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showLayout(layoutResId: Int) {
+        programContainer.removeAllViews()
+        val view = layoutInflater.inflate(layoutResId, programContainer, false)
+        programContainer.addView(view)
     }
 }

@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DumbassCalculatorMk2">
         <activity
+            android:name=".QuadraticEquation"
+            android:exported="false" />
+        <activity
+            android:name=".ArithmeticOperation"
+            android:exported="false" />
+        <activity
             android:name=".ArithmeticOperationActivity"
             android:exported="false" />
         <activity

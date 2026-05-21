@@ -20,23 +20,20 @@
             android:background="@color/dark_brown"
             app:title="@string/title"
             app:titleTextColor="@color/light_beige"
-            android:theme="@style/AppTheme.AppBarOverlay"
+            android:theme="@style/Theme.DumbassCalculatorMk2.AppBarOverlay"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
-        <TextView
-            android:id="@+id/tv_snv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+        <FrameLayout
+            android:id="@+id/program_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textSize="20sp"
-            android:textColor="@color/brown"
-            android:fontFamily="@font/milky_vintage"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,6 +46,7 @@
         app:menu="@menu/side_tabs"
         android:fitsSystemWindows="true"
         android:background="@color/light_beige"
-        app:itemTextColor="@color/dark_brown"/>
+        app:itemTextColor="@color/dark_brown"
+        app:itemTextAppearance="@style/Theme.DumbassCalculatorMk2.AppBarOverlay"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
