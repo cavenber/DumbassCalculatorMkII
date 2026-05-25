@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewStub
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
 
     lateinit var nv_side: NavigationView
+    lateinit var tv_snv: TextView
 
     lateinit var toolbar: Toolbar
     lateinit var toggle: ActionBarDrawerToggle
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.main)
 
         nv_side = findViewById(R.id.nv_side)
+        tv_snv = findViewById(R.id.tv_snv)
+        tv_snv.text = getString(R.string.arithmetic_operation)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -58,6 +62,8 @@ class MainActivity : AppCompatActivity() {
                     showLayout(R.layout.activity_quadratic_equation)
                 }
             }
+            tv_snv.text = item.title
+            drawerLayout.closeDrawers()
             drawerLayout.closeDrawers()
             true
         })
