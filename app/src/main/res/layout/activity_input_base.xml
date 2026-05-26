@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    tools:context=".InputBase">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <Button
+        android:id="@+id/btn0"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="160dp"
+        android:layout_height="95dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/v40"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn1"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="1"
+        app:layout_constraintEnd_toStartOf="@+id/v20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/h50" />
+
+    <Button
+        android:id="@+id/btn2"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="2"
+        app:layout_constraintEnd_toStartOf="@+id/v40"
+        app:layout_constraintStart_toStartOf="@id/v20"
+        app:layout_constraintTop_toTopOf="@id/h50" />
+
+    <Button
+        android:id="@+id/btn3"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="3"
+        app:layout_constraintEnd_toStartOf="@id/v60"
+        app:layout_constraintStart_toStartOf="@id/v40"
+        app:layout_constraintTop_toTopOf="@id/h50" />
+
+    <Button
+        android:id="@+id/btn4"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="4"
+        app:layout_constraintEnd_toStartOf="@+id/v20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/h25" />
+
+    <Button
+        android:id="@+id/btn5"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="5"
+        app:layout_constraintEnd_toStartOf="@+id/v40"
+        app:layout_constraintStart_toStartOf="@id/v20"
+        app:layout_constraintTop_toTopOf="@+id/h25" />
+
+    <Button
+        android:id="@+id/btn6"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="6"
+        app:layout_constraintEnd_toStartOf="@id/v60"
+        app:layout_constraintStart_toStartOf="@id/v40"
+        app:layout_constraintTop_toTopOf="@id/h25" />
+
+    <Button
+        android:id="@+id/btn7"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="7"
+        app:layout_constraintEnd_toStartOf="@+id/v20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn8"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="8"
+        app:layout_constraintEnd_toStartOf="@+id/v40"
+        app:layout_constraintStart_toStartOf="@+id/v20"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn9"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="9"
+        app:layout_constraintEnd_toStartOf="@+id/v60"
+        app:layout_constraintStart_toStartOf="@+id/v40"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDecimalPoint"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="."
+        app:layout_constraintEnd_toStartOf="@id/v60"
+        app:layout_constraintStart_toStartOf="@id/v40"
+        app:layout_constraintTop_toTopOf="@id/h75" />
+
+    <Button
+        android:id="@+id/btnExecute"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="="
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/v80"
+        app:layout_constraintTop_toTopOf="@id/h75" />
+
+    <Button
+        android:id="@+id/btnAns"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="Ans"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/v80"
+        app:layout_constraintStart_toStartOf="@id/v60"
+        app:layout_constraintTop_toTopOf="@id/h75" />
+
+    <Button
+        android:id="@+id/btnPlus"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="+"
+        app:layout_constraintEnd_toStartOf="@id/v80"
+        app:layout_constraintStart_toStartOf="@id/v60"
+        app:layout_constraintTop_toTopOf="@id/h50" />
+
+    <Button
+        android:id="@+id/btnMultiply"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="x"
+        app:layout_constraintEnd_toStartOf="@id/v80"
+        app:layout_constraintStart_toStartOf="@id/v60"
+        app:layout_constraintTop_toTopOf="@id/h25" />
+
+    <Button
+        android:id="@+id/btnSubtract"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="-"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/v80"
+        app:layout_constraintTop_toTopOf="@id/h50" />
+
+    <Button
+        android:id="@+id/btnDivide"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="÷"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/v80"
+        app:layout_constraintTop_toTopOf="@id/h25" />
+
+    <Button
+        android:id="@+id/btnExponent"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="xⁿ"
+        app:layout_constraintEnd_toStartOf="@id/v80"
+        app:layout_constraintStart_toStartOf="@id/v60"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSquareRoot"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:text="√"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/v80"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

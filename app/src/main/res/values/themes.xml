@@ -11,4 +11,11 @@
     <style name="Theme.DumbassCalculatorMk2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="Theme.DumbassCalculatorMk2.Button" parent="Base.Theme.DumbassCalculatorMk2">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/light_beige</item>
+        <item name="backgroundTint">@color/brown</item>
+
+    </style>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -13,37 +13,51 @@
     android:layout_marginBottom="?attr/actionBarSize"
     tools:context=".ArithmeticOperation">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="0dp" />
-
     <EditText
+        android:id="@+id/equation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:editable="false"
-        android:textSize="30sp"
-        android:textColor="@color/brown"
         android:backgroundTint="@color/dark_brown"
-        android:hint="Equation"/>
+        android:editable="false"
+        android:hint="Equation"
+        android:textColor="@color/brown"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="================"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="="
         android:textColor="@color/dark_brown"
-        android:gravity="center"/>
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:editable="false"
-        android:textSize="30sp"
-        android:textColor="@color/brown"
+        android:layout_marginStart="24dp"
         android:backgroundTint="@color/dark_brown"
-        android:hint="Answer"/>
+        android:editable="false"
+        android:hint="Answer"
+        android:textColor="@color/brown"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/equation" />
 
-</LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="bottom|center"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include layout="@layout/activity_input_base" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

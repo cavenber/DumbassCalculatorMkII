@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DumbassCalculatorMk2">
         <activity
+            android:name=".InputBase"
+            android:exported="true" />
+        <activity
             android:name=".QuadraticEquation"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ArithmeticOperation"
-            android:exported="false" />
-        <activity
-            android:name=".ArithmeticOperationActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

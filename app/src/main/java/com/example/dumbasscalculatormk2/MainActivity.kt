@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var toolbar: Toolbar
     lateinit var toggle: ActionBarDrawerToggle
 
-    private lateinit var programContainer: FrameLayout
+    lateinit var programContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.snv_arithmetic_operation -> {
                     showLayout(R.layout.activity_arithmetic_operation)
+
                 }
                 R.id.snv_quadratic_equation -> {
                     showLayout(R.layout.activity_quadratic_equation)
