@@ -12,18 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DumbassCalculatorMk2">
         <activity
-            android:name=".InputSpecial"
-            android:exported="false" />
-        <activity
-            android:name=".InputBase"
-            android:exported="true" />
-        <activity
-            android:name=".QuadraticEquation"
-            android:exported="true" />
-        <activity
-            android:name=".ArithmeticOperation"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

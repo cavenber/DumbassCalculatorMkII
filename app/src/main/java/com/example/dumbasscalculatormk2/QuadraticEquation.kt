@@ -12,7 +12,7 @@ class QuadraticEquation : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_quadratic_equation, container, false)
+        return inflater.inflate(R.layout.quadratic_equation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

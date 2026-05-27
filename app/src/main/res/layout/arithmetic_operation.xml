@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dark_brown"
         android:editable="false"
-        android:maxLines="2"
+        android:maxLines="1"
         android:hint="Equation"
         android:inputType="none"
         android:textColor="@color/brown"
@@ -45,7 +45,7 @@
         android:layout_marginStart="24dp"
         android:backgroundTint="@color/dark_brown"
         android:editable="false"
-        android:maxLines="2"
+        android:maxLines="1"
         android:hint="Answer"
         android:textColor="@color/brown"
         android:textSize="30sp"
@@ -56,10 +56,10 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_gravity="bottom|center"
         app:layout_constraintBottom_toTopOf="@id/baseInputLayout">
-        <include layout="@layout/activity_input_special" />
+        <include layout="@layout/input_special" />
     </FrameLayout>
 
     <FrameLayout
@@ -69,7 +69,7 @@
         android:layout_gravity="bottom|center"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <include layout="@layout/activity_input_base" />
+        <include layout="@layout/input_base" />
 
     </FrameLayout>
 
