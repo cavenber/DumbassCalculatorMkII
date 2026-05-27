@@ -16,6 +16,11 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/light_beige</item>
         <item name="backgroundTint">@color/brown</item>
+    </style>
 
+    <style name="Theme.DumbassCalculatorMk2.Button.smol" parent="Base.Theme.DumbassCalculatorMk2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/light_beige</item>
+        <item name="backgroundTint">@color/brown</item>
     </style>
 </resources>

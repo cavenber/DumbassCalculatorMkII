@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DumbassCalculatorMk2">
         <activity
+            android:name=".InputSpecial"
+            android:exported="false" />
+        <activity
             android:name=".InputBase"
             android:exported="true" />
         <activity
