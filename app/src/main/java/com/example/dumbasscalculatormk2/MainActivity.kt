@@ -50,17 +50,18 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        programContainer = findViewById(R.id.program_container)
-        showLayout(R.layout.activity_arithmetic_operation)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().replace(R.id.program_container, ArithmeticOperation()).commit()
+        }
 
         nv_side.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.snv_arithmetic_operation -> {
-                    showLayout(R.layout.activity_arithmetic_operation)
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container, ArithmeticOperation()).commit()
 
                 }
                 R.id.snv_quadratic_equation -> {
-                    showLayout(R.layout.activity_quadratic_equation)
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container, QuadraticEquation()).commit()
                 }
             }
             tv_snv.text = item.title

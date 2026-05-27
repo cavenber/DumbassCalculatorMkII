@@ -20,6 +20,7 @@
         android:backgroundTint="@color/dark_brown"
         android:editable="false"
         android:hint="Equation"
+        android:inputType="none"
         android:textColor="@color/brown"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,15 +29,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="9dp"
         android:gravity="center"
         android:text="="
         android:textColor="@color/dark_brown"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/equation" />
 
     <EditText
+        android:id="@+id/answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
