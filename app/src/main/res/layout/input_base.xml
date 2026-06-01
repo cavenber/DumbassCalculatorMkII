@@ -1,306 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp">
+    android:layout_height="match_parent"
+    android:columnCount="5"
+    android:rowCount="5"
+    android:padding="4dp"
+    android:useDefaultMargins="true">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h60"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h80"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v60"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v80"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8" />
-
-    <Button
-        android:id="@+id/btn0"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
-        android:text="0"
-        app:layout_constraintEnd_toStartOf="@id/v40"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/h80" />
-
-    <Button
-        android:id="@+id/btn1"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="1"
-        app:layout_constraintEnd_toStartOf="@+id/v20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/h60" />
-
-    <Button
-        android:id="@+id/btn2"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="2"
-        app:layout_constraintEnd_toStartOf="@+id/v40"
-        app:layout_constraintStart_toStartOf="@id/v20"
-        app:layout_constraintTop_toTopOf="@id/h60" />
-
-    <Button
-        android:id="@+id/btn3"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="3"
-        app:layout_constraintEnd_toStartOf="@id/v60"
-        app:layout_constraintStart_toStartOf="@id/v40"
-        app:layout_constraintTop_toTopOf="@id/h60" />
-
-    <Button
-        android:id="@+id/btn4"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="4"
-        app:layout_constraintEnd_toStartOf="@+id/v20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/h40" />
-
-    <Button
-        android:id="@+id/btn5"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="5"
-        app:layout_constraintEnd_toStartOf="@+id/v40"
-        app:layout_constraintStart_toStartOf="@id/v20"
-        app:layout_constraintTop_toTopOf="@+id/h40" />
-
-    <Button
-        android:id="@+id/btn6"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="6"
-        app:layout_constraintEnd_toStartOf="@id/v60"
-        app:layout_constraintStart_toStartOf="@id/v40"
-        app:layout_constraintTop_toTopOf="@id/h40" />
-
-    <Button
-        android:id="@+id/btn7"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="7"
-        app:layout_constraintEnd_toStartOf="@+id/v20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/h20" />
-
-    <Button
-        android:id="@+id/btn8"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="8"
-        app:layout_constraintEnd_toStartOf="@+id/v40"
-        app:layout_constraintStart_toStartOf="@+id/v20"
-        app:layout_constraintTop_toTopOf="@id/h20" />
-
-    <Button
-        android:id="@+id/btn9"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="9"
-        app:layout_constraintEnd_toStartOf="@+id/v60"
-        app:layout_constraintStart_toStartOf="@+id/v40"
-        app:layout_constraintTop_toTopOf="@id/h20" />
-
-    <Button
-        android:id="@+id/btnPlus"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="+"
-        app:layout_constraintEnd_toStartOf="@id/v80"
-        app:layout_constraintStart_toStartOf="@id/v60"
-        app:layout_constraintTop_toTopOf="@id/h60" />
-
-    <Button
-        android:id="@+id/btnMultiply"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="*"
-        app:layout_constraintEnd_toStartOf="@id/v80"
-        app:layout_constraintStart_toStartOf="@id/v60"
-        app:layout_constraintTop_toTopOf="@id/h40" />
-
-    <Button
-        android:id="@+id/btnSubtract"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="-"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/v80"
-        app:layout_constraintTop_toTopOf="@id/h60" />
-
-    <Button
-        android:id="@+id/btnDivide"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="/"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/v80"
-        app:layout_constraintTop_toTopOf="@id/h40" />
-
-    <Button
-        android:id="@+id/btnStartBracket"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="("
-        app:layout_constraintEnd_toStartOf="@id/v80"
-        app:layout_constraintStart_toStartOf="@id/v60"
-        app:layout_constraintTop_toTopOf="@id/h20" />
-
-    <Button
-        android:id="@+id/btnEndBracket"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text=")"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/v80"
-        app:layout_constraintTop_toTopOf="@id/h20" />
-
-    <Button
-        android:id="@+id/btnDecimalPoint"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="."
-        app:layout_constraintEnd_toStartOf="@id/v60"
-        app:layout_constraintStart_toStartOf="@id/v40"
-        app:layout_constraintTop_toTopOf="@id/h80" />
-
-    <Button
-        android:id="@+id/btnAnswer"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="Ans"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@id/v80"
-        app:layout_constraintStart_toStartOf="@id/v60"
-        app:layout_constraintTop_toTopOf="@id/h80" />
-
-    <Button
-        android:id="@+id/btnExecute"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="="
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/v80"
-        app:layout_constraintTop_toTopOf="@id/h80" />
+    <!-- Row 1 -->
 
     <Button
         android:id="@+id/btnReset"
         style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:text="AC"
-        app:layout_constraintEnd_toStartOf="@+id/v20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
 
     <Button
         android:id="@+id/btnBackspace"
         style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:text="&lt;"
-        app:layout_constraintEnd_toStartOf="@+id/v40"
-        app:layout_constraintStart_toStartOf="@+id/v20"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
 
     <Button
         android:id="@+id/btnFactorial"
         style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:text="!"
-        app:layout_constraintEnd_toStartOf="@+id/v60"
-        app:layout_constraintStart_toStartOf="@+id/v40"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
 
     <Button
         android:id="@+id/btnExponent"
         style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:text="^"
-        app:layout_constraintEnd_toStartOf="@id/v80"
-        app:layout_constraintStart_toStartOf="@id/v60"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
 
     <Button
         android:id="@+id/btnRemainder"
         style="@style/Theme.DumbassCalculatorMk2.Button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:text="%"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/h80"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Row 2 -->
+
+    <Button
+        android:id="@+id/btn7"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btn8"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btn9"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnStartBracket"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="("
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnEndBracket"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text=")"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <!-- Row 3 -->
+
+    <Button
+        android:id="@+id/btn4"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btn5"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btn6"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnMultiply"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="*"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnDivide"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="/"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <!-- Row 4 -->
+
+    <Button
+        android:id="@+id/btn1"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btn2"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btn3"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnPlus"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="+"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnSubtract"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="-"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <!-- Row 5 -->
+
+    <Button
+        android:id="@+id/btn0"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="0"
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="2"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnDecimalPoint"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="."
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnAnswer"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="Ans"
+        android:textSize="18sp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
+        android:id="@+id/btnExecute"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="="
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+</GridLayout>

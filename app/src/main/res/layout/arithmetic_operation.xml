@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -17,60 +17,50 @@
         android:id="@+id/equation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/dark_brown"
-        android:editable="false"
-        android:maxLines="1"
         android:hint="Equation"
         android:inputType="none"
-        android:textColor="@color/brown"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:gravity="center"
-        android:text="="
-        android:textColor="@color/dark_brown"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/equation" />
-
-    <EditText
-        android:id="@+id/answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:backgroundTint="@color/dark_brown"
-        android:editable="false"
         android:maxLines="1"
-        android:hint="Answer"
         android:textColor="@color/brown"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/equation" />
+        android:textSize="28sp"
+        android:backgroundTint="@color/dark_brown"/>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="bottom|center"
-        app:layout_constraintBottom_toTopOf="@id/baseInputLayout">
-        <include layout="@layout/input_special" />
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
-    <FrameLayout
-        android:id="@+id/baseInputLayout"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:textSize="36sp"
+            android:textColor="@color/dark_brown"/>
+
+        <EditText
+            android:id="@+id/answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Answer"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/dark_brown"/>
+    </LinearLayout>
+
+    <include
+        layout="@layout/input_special"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_gravity="bottom|center"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-        <include layout="@layout/input_base" />
+    <include
+        layout="@layout/input_base"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"/>
 
-    </FrameLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
