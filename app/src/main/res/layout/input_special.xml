@@ -16,6 +16,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="sqrt(" />
 
     <Button
@@ -25,6 +29,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="cbrt(" />
 
     <Button
@@ -34,6 +42,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="nthrt(" />
 
     <Button
@@ -43,6 +55,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="sin(" />
 
     <Button
@@ -52,6 +68,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="asin(" />
 
     <!-- Row 2 -->
@@ -63,6 +83,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="ln(" />
 
     <Button
@@ -72,6 +96,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="log10(" />
 
     <Button
@@ -81,6 +109,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="log2(" />
 
     <Button
@@ -90,6 +122,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="cos(" />
 
     <Button
@@ -99,6 +135,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="acos(" />
 
     <!-- Row 3 -->
@@ -111,6 +151,10 @@
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
         android:text="π"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:textSize="18sp" />
 
     <Button
@@ -121,6 +165,10 @@
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
         android:text="e"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:textSize="18sp" />
 
     <Button
@@ -130,6 +178,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="," />
 
     <Button
@@ -139,6 +191,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="tan(" />
 
     <Button
@@ -148,6 +204,10 @@
         android:layout_height="0dp"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="20sp"
         android:text="atan(" />
 
 </GridLayout>

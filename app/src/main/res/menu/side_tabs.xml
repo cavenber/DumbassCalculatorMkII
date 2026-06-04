@@ -9,4 +9,14 @@
         android:id="@+id/snv_quadratic_equation"
         android:title="@string/quadratic_equation" />
 
+    <item
+        android:id="@+id/snv_variation"
+        android:title="Variation">
+        <menu>
+            <item
+                android:id="@+id/snv_variation_direct"
+                android:title="Direct Variation" />
+        </menu>
+    </item>
+
 </menu>
