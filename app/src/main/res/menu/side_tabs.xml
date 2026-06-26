@@ -2,12 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/snv_arithmetic_operation"
-        android:title="@string/arithmetic_operation" />
+        android:id="@+id/snv_basic_cal"
+        android:title="Basic Caluclations">
+        <menu>
+            <item
+                android:id="@+id/snv_arithmetic_operation"
+                android:title="@string/arithmetic_operation" />
 
-    <item
-        android:id="@+id/snv_quadratic_equation"
-        android:title="@string/quadratic_equation" />
+            <item
+                android:id="@+id/snv_quadratic_equation"
+                android:title="@string/quadratic_equation" />
+        </menu>
+    </item>
 
     <item
         android:id="@+id/snv_variation"

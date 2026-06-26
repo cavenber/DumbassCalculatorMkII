@@ -29,129 +29,137 @@ class ArithmeticOperation : Fragment() {
         equation = view.findViewById<EditText>(R.id.equation)
         answer = view.findViewById<EditText>(R.id.answer)
 
-        // base input
-        val btn0 = view.findViewById<Button>(R.id.btn0)
-        btn0.setOnClickListener { equation.append("0") }
+        inputBase(equation, answer)
+        inputSpecial(equation)
 
-        val btn1 = view.findViewById<Button>(R.id.btn1)
-        btn1.setOnClickListener { equation.append("1") }
+    }
 
-        val btn2 = view.findViewById<Button>(R.id.btn2)
-        btn2.setOnClickListener { equation.append("2") }
+    fun inputBase(input: EditText, output: EditText) {
 
-        val btn3 = view.findViewById<Button>(R.id.btn3)
-        btn3.setOnClickListener { equation.append("3") }
+        view?.findViewById<Button>(R.id.btn0)
+            ?.setOnClickListener { input.append("0") }
 
-        val btn4 = view.findViewById<Button>(R.id.btn4)
-        btn4.setOnClickListener { equation.append("4") }
+        view?.findViewById<Button>(R.id.btn1)
+            ?.setOnClickListener { input.append("1") }
 
-        val btn5 = view.findViewById<Button>(R.id.btn5)
-        btn5.setOnClickListener { equation.append("5") }
+        view?.findViewById<Button>(R.id.btn2)
+            ?.setOnClickListener { input.append("2") }
 
-        val btn6 = view.findViewById<Button>(R.id.btn6)
-        btn6.setOnClickListener { equation.append("6") }
+        view?.findViewById<Button>(R.id.btn3)
+            ?.setOnClickListener { input.append("3") }
 
-        val btn7 = view.findViewById<Button>(R.id.btn7)
-        btn7.setOnClickListener { equation.append("7") }
+        view?.findViewById<Button>(R.id.btn4)
+            ?.setOnClickListener { input.append("4") }
 
-        val btn8 = view.findViewById<Button>(R.id.btn8)
-        btn8.setOnClickListener { equation.append("8") }
+        view?.findViewById<Button>(R.id.btn5)
+            ?.setOnClickListener { input.append("5") }
 
-        val btn9 = view.findViewById<Button>(R.id.btn9)
-        btn9.setOnClickListener { equation.append("9") }
+        view?.findViewById<Button>(R.id.btn6)
+            ?.setOnClickListener { input.append("6") }
 
-        val btnDecimalPoint = view.findViewById<Button>(R.id.btnDecimalPoint)
-        btnDecimalPoint.setOnClickListener { equation.append(".") }
+        view?.findViewById<Button>(R.id.btn7)
+            ?.setOnClickListener { input.append("7") }
 
-        val btnPlus = view.findViewById<Button>(R.id.btnPlus)
-        btnPlus.setOnClickListener { equation.append("+") }
+        view?.findViewById<Button>(R.id.btn8)
+            ?.setOnClickListener { input.append("8") }
 
-        val btnSubtract = view.findViewById<Button>(R.id.btnSubtract)
-        btnSubtract.setOnClickListener { equation.append("-") }
+        view?.findViewById<Button>(R.id.btn9)
+            ?.setOnClickListener { input.append("9") }
 
-        val btnMultiply = view.findViewById<Button>(R.id.btnMultiply)
-        btnMultiply.setOnClickListener { equation.append("*") }
+        view?.findViewById<Button>(R.id.btnDecimalPoint)
+            ?.setOnClickListener { input.append(".") }
 
-        val btnDivide = view.findViewById<Button>(R.id.btnDivide)
-        btnDivide.setOnClickListener { equation.append("/") }
+        view?.findViewById<Button>(R.id.btnPlus)
+            ?.setOnClickListener { input.append("+") }
 
-        val btnStartBracket = view.findViewById<Button>(R.id.btnStartBracket)
-        btnStartBracket.setOnClickListener { equation.append("(") }
+        view?.findViewById<Button>(R.id.btnSubtract)
+            ?.setOnClickListener { input.append("-") }
 
-        val btnEndBracket = view.findViewById<Button>(R.id.btnEndBracket)
-        btnEndBracket.setOnClickListener { equation.append(")") }
+        view?.findViewById<Button>(R.id.btnMultiply)
+            ?.setOnClickListener { input.append("*") }
 
-        val btnFactorial = view.findViewById<Button>(R.id.btnFactorial)
-        btnFactorial.setOnClickListener { equation.append("!") }
+        view?.findViewById<Button>(R.id.btnDivide)
+            ?.setOnClickListener { input.append("/") }
 
-        val btnExponent = view.findViewById<Button>(R.id.btnExponent)
-        btnExponent.setOnClickListener { equation.append("^") }
+        view?.findViewById<Button>(R.id.btnStartBracket)
+            ?.setOnClickListener { input.append("(") }
 
-        val btnRemainder = view.findViewById<Button>(R.id.btnRemainder)
-        btnRemainder.setOnClickListener { equation.append("%") }
+        view?.findViewById<Button>(R.id.btnEndBracket)
+            ?.setOnClickListener { input.append(")") }
 
-        val btnExecute = view.findViewById<Button>(R.id.btnExecute)
-        btnExecute.setOnClickListener { calculate() }
+        view?.findViewById<Button>(R.id.btnFactorial)
+            ?.setOnClickListener { input.append("!") }
 
-        val btnReset = view.findViewById<Button>(R.id.btnReset)
-        btnReset.setOnClickListener {
-            equation.setText("")
-            answer.setText("")
-        }
+        view?.findViewById<Button>(R.id.btnExponent)
+            ?.setOnClickListener { input.append("^") }
 
-        val btnBackspace = view.findViewById<Button>(R.id.btnBackspace)
-        btnBackspace.setOnClickListener {
-            val length = equation.text.toString().length
-            if (length > 0)
-                equation.setText(equation.text.delete(length - 1, length))
-        }
+        view?.findViewById<Button>(R.id.btnRemainder)
+            ?.setOnClickListener { input.append("%") }
 
-        // special input
-        val btnSqrt = view.findViewById<Button>(R.id.btnSqrt)
-        btnSqrt.setOnClickListener { equation.append("sqrt(") }
+        view?.findViewById<Button>(R.id.btnExecute)
+            ?.setOnClickListener { calculate() }
 
-        val btnCbrt = view.findViewById<Button>(R.id.btnCbrt)
-        btnCbrt.setOnClickListener { equation.append("cbrt(") }
+        view?.findViewById<Button>(R.id.btnReset)
+            ?.setOnClickListener {
+                input.setText("")
+                output.setText("")
+            }
 
-        val btnNthrt = view.findViewById<Button>(R.id.btnNthrt)
-        btnNthrt.setOnClickListener { equation.append("nthrt(") }
+        view?.findViewById<Button>(R.id.btnBackspace)
+            ?.setOnClickListener {
+                val length = input.text?.length ?: 0
+                if (length > 0) {
+                    input.setText(input.text?.delete(length - 1, length))
+                }
+            }
+    }
 
-        val btnSin = view.findViewById<Button>(R.id.btnSin)
-        btnSin.setOnClickListener { equation.append("sin(") }
+    fun inputSpecial(input: EditText) {
 
-        val btnAsin = view.findViewById<Button>(R.id.btnAsin)
-        btnAsin.setOnClickListener { equation.append("asin(") }
+        view?.findViewById<Button>(R.id.btnSqrt)
+            ?.setOnClickListener { input.append("sqrt(") }
 
-        val btnCos = view.findViewById<Button>(R.id.btnCos)
-        btnCos.setOnClickListener { equation.append("cos(") }
+        view?.findViewById<Button>(R.id.btnCbrt)
+            ?.setOnClickListener { input.append("cbrt(") }
 
-        val btnAcos = view.findViewById<Button>(R.id.btnAcos)
-        btnAcos.setOnClickListener { equation.append("acos(") }
+        view?.findViewById<Button>(R.id.btnNthrt)
+            ?.setOnClickListener { input.append("nthrt(") }
 
-        val btnTan = view.findViewById<Button>(R.id.btnTan)
-        btnTan.setOnClickListener { equation.append("tan(") }
+        view?.findViewById<Button>(R.id.btnSin)
+            ?.setOnClickListener { input.append("sin(") }
 
-        val btnAtan = view.findViewById<Button>(R.id.btnAtan)
-        btnAtan.setOnClickListener { equation.append("atan(") }
+        view?.findViewById<Button>(R.id.btnAsin)
+            ?.setOnClickListener { input.append("asin(") }
 
-        val btnLn = view.findViewById<Button>(R.id.btnLn)
-        btnLn.setOnClickListener { equation.append("ln(") }
+        view?.findViewById<Button>(R.id.btnCos)
+            ?.setOnClickListener { input.append("cos(") }
 
-        val btnLog10 = view.findViewById<Button>(R.id.btnLog10)
-        btnLog10.setOnClickListener { equation.append("log10(") }
+        view?.findViewById<Button>(R.id.btnAcos)
+            ?.setOnClickListener { input.append("acos(") }
 
-        val btnLog2 = view.findViewById<Button>(R.id.btnLog2)
-        btnLog2.setOnClickListener { equation.append("log2(") }
+        view?.findViewById<Button>(R.id.btnTan)
+            ?.setOnClickListener { input.append("tan(") }
 
-        val btnE = view.findViewById<Button>(R.id.btnE)
-        btnE.setOnClickListener { equation.append("e") }
+        view?.findViewById<Button>(R.id.btnAtan)
+            ?.setOnClickListener { input.append("atan(") }
 
-        val btnPi = view.findViewById<Button>(R.id.btnPi)
-        btnPi.setOnClickListener { equation.append("PI") }
+        view?.findViewById<Button>(R.id.btnLn)
+            ?.setOnClickListener { input.append("ln(") }
 
-        val btnComma = view.findViewById<Button>(R.id.btnComma)
-        btnComma.setOnClickListener { equation.append(",") }
+        view?.findViewById<Button>(R.id.btnLog10)
+            ?.setOnClickListener { input.append("log10(") }
 
+        view?.findViewById<Button>(R.id.btnLog2)
+            ?.setOnClickListener { input.append("log2(") }
+
+        view?.findViewById<Button>(R.id.btnE)
+            ?.setOnClickListener { input.append("e") }
+
+        view?.findViewById<Button>(R.id.btnPi)
+            ?.setOnClickListener { input.append("PI") }
+
+        view?.findViewById<Button>(R.id.btnComma)
+            ?.setOnClickListener { input.append(",") }
     }
 
     fun calculate() {
