@@ -8,16 +8,17 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.notkamui.keval.Keval
+import kotlin.math.pow
 
 class QuadraticEquation : Fragment() {
 
-    lateinit var a : EditText
-    lateinit var b : EditText
-    lateinit var c : EditText
+    lateinit var etA : EditText
+    lateinit var etB : EditText
+    lateinit var etC : EditText
 
     private var selected : EditText? = null
 
-    lateinit var x : EditText
+    lateinit var etX : EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,15 +31,15 @@ class QuadraticEquation : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        a = view.findViewById<EditText>(R.id.qe_a)
-        b = view.findViewById<EditText>(R.id.qe_b)
-        c = view.findViewById<EditText>(R.id.qe_c)
+        etA = view.findViewById<EditText>(R.id.qe_a)
+        etB = view.findViewById<EditText>(R.id.qe_b)
+        etC = view.findViewById<EditText>(R.id.qe_c)
 
-        x = view.findViewById<EditText>(R.id.qe_x)
+        etX = view.findViewById<EditText>(R.id.qe_x)
 
-        a.showSoftInputOnFocus = false
-        b.showSoftInputOnFocus = false
-        c.showSoftInputOnFocus = false
+        etA.showSoftInputOnFocus = false
+        etB.showSoftInputOnFocus = false
+        etC.showSoftInputOnFocus = false
 
         // focus change listener
         val listener = View.OnFocusChangeListener { v, hasFocus ->
@@ -47,11 +48,11 @@ class QuadraticEquation : Fragment() {
             }
         }
 
-        a.onFocusChangeListener = listener
-        b.onFocusChangeListener = listener
-        c.onFocusChangeListener = listener
+        etA.onFocusChangeListener = listener
+        etB.onFocusChangeListener = listener
+        etC.onFocusChangeListener = listener
 
-        inputBase(x)
+        inputBase(etX)
     }
 
     fun inputBase(output: EditText) {
@@ -138,5 +139,27 @@ class QuadraticEquation : Fragment() {
 
 
     fun calculate() {
+        try {
+            val a: Double = Keval.eval(etA.text.toString())
+            val b: Double = Keval.eval(etB.text.toString())
+            val c: Double = Keval.eval(etC.text.toString())
+
+            val discriminant = b.pow(2) - (4 * a * c)
+
+            if (discriminant < 0) {
+                etX.setText("No Real Roots")
+            } else if (discriminant == 0.0) {
+                etX.setText(((-b + (b.pow(2) - 4 * (a * c)).pow(0.5)) / (2 * a)).toString())
+            } else if (discriminant > 0) {
+                val x1: Double = (-b + (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+                val x2: Double = (-b - (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+
+                etX.setText(String.format("%s or %s", x1.toString(), x2.toString()))
+            } else {
+                etX.setText("You fucking idiot.")
+            }
+        } catch (e: RuntimeException) {
+            etX.setText("You fucking idiot.")
+        }
     }
 }
