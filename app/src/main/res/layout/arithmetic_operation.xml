@@ -21,6 +21,7 @@
         android:inputType="none"
         android:focusable="false"
         android:maxLines="1"
+        android:fontFamily="@font/milky_vintage"
         android:textColor="@color/brown"
         android:textSize="28sp"
         android:backgroundTint="@color/dark_brown"/>
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="="
+            android:fontFamily="@font/milky_vintage"
             android:textSize="36sp"
             android:textColor="@color/dark_brown"/>
 
@@ -47,6 +49,7 @@
             android:inputType="none"
             android:focusable="false"
             android:maxLines="1"
+            android:fontFamily="@font/milky_vintage"
             android:textColor="@color/brown"
             android:textSize="28sp"
             android:layout_marginStart="10dp"

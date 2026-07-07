@@ -16,7 +16,7 @@ class QuadraticEquation : Fragment() {
     lateinit var etB : EditText
     lateinit var etC : EditText
 
-    private var selected : EditText? = null
+    private var selected : EditText? = null // universal selection variable
 
     lateinit var etX : EditText
 
@@ -122,7 +122,11 @@ class QuadraticEquation : Fragment() {
 
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
-                selected?.setText("")
+                // input fields
+                etA.setText("")
+                etB.setText("")
+                etC.setText("")
+
                 output.setText("")
             }
 
@@ -139,7 +143,7 @@ class QuadraticEquation : Fragment() {
 
 
     fun calculate() {
-        try {
+        try { // write calculations here
             val a: Double = Keval.eval(etA.text.toString())
             val b: Double = Keval.eval(etB.text.toString())
             val c: Double = Keval.eval(etC.text.toString())

@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.snv_quadratic_equation -> {
                     supportFragmentManager.beginTransaction().replace(R.id.program_container, QuadraticEquation()).commit()
                 }
+                R.id.snv_variation_direct -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container, DirectVariation()).commit()
+                }
             }
             tv_snv.text = item.title
             drawerLayout.closeDrawers()

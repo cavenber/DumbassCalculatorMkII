@@ -3,7 +3,7 @@
     <style name="Base.Theme.DumbassCalculatorMk2" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:fontFamily">@font/milky_vintage</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="fontFamily">@font/milky_vintage</item>
         <item name="android:listDivider">@color/brown</item>
     </style>
 
@@ -11,22 +11,27 @@
 
     <style name="Theme.DumbassCalculatorMk2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/milky_vintage</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
     <style name="NavbarSubheaderText" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/milky_vintage</item>
     </style>
 
     <style name="NavbarText" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/milky_vintage</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/light_beige</item>
     </style>
 
-    <style name="Theme.DumbassCalculatorMk2.Button" parent="Base.Theme.DumbassCalculatorMk2">
+    <style name="Theme.DumbassCalculatorMk2.Button" parent="Widget.Material3.Button">
         <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="android:textColor">@color/light_beige</item>
         <item name="backgroundTint">@color/brown</item>
         <item name="android:minWidth">0dp</item>
@@ -37,8 +42,9 @@
         <item name="android:insetBottom">0dp</item>
     </style>
 
-    <style name="Theme.DumbassCalculatorMk2.Button.smol" parent="Base.Theme.DumbassCalculatorMk2">
+    <style name="Theme.DumbassCalculatorMk2.Button.smol" parent="Widget.Material3.Button">
         <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="android:textColor">@color/light_beige</item>
         <item name="backgroundTint">@color/brown</item>
         <item name="android:minWidth">0dp</item>
