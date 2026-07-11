@@ -1,6 +1,7 @@
 package com.example.dumbasscalculatormk2
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewStub
@@ -24,8 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var toolbar: Toolbar
     lateinit var toggle: ActionBarDrawerToggle
-
-    lateinit var programContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             }
             tv_snv.text = item.title
             drawerLayout.closeDrawers()
-            drawerLayout.closeDrawers()
             true
         })
     }
@@ -81,9 +79,8 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showLayout(layoutResId: Int) {
-        programContainer.removeAllViews()
-        val view = layoutInflater.inflate(layoutResId, programContainer, false)
-        programContainer.addView(view)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+        return true
     }
 }

@@ -13,6 +13,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="actionOverflowButtonStyle">@style/ThreeDotsThingy</item>
     </style>
 
     <style name="NavbarSubheaderText" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -27,6 +28,15 @@
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/light_beige</item>
+    </style>
+
+    <style name="ThreeDotsThingy" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/light_beige</item>
+    </style>
+
+    <style name="OptionsMenu" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:backgroundTint">@color/beige</item>
+        <item name="android:textColor">@color/dark_brown</item>
     </style>
 
     <style name="Theme.DumbassCalculatorMk2.Button" parent="Widget.Material3.Button">
