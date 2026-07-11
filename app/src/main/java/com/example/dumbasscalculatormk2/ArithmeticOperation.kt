@@ -165,6 +165,9 @@ class ArithmeticOperation : Fragment() {
     fun calculate() {
         try {
             answer.setText(Keval.eval(equation.text.toString()).toString())
+
+            DBHelper(requireContext()).saveAnswer("Arithmetic Operation", equation.text.toString(), answer.text.toString().toDouble())
+
         } catch (e: RuntimeException) {answer.setText("You fucking idiot.")}
     }
 }
