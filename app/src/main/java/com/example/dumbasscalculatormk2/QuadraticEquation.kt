@@ -118,7 +118,10 @@ class QuadraticEquation : Fragment() {
             ?.setOnClickListener { selected?.append("%") }
 
         view?.findViewById<Button>(R.id.btnExecute)
-            ?.setOnClickListener { calculate() }
+            ?.setOnClickListener {
+                calculate()
+                answerLog()
+            }
 
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
@@ -139,6 +142,9 @@ class QuadraticEquation : Fragment() {
                     }
                 }
             }
+
+        view?.findViewById<Button>(R.id.btnAnswer)
+            ?.setOnClickListener { selected?.append(DBHelper(requireContext()).getMostRecentAnswer()) }
     }
 
 
@@ -165,5 +171,15 @@ class QuadraticEquation : Fragment() {
         } catch (e: RuntimeException) {
             etX.setText("You fucking idiot.")
         }
+    }
+
+    fun answerLog() {
+        try {
+            DBHelper(requireContext()).saveAnswer(
+                "Quadratic Equation",
+                String.format("%sx² + %sx + %s = 0", etA.text.toString(), etB.text.toString(), etC.text.toString()),
+                etX.text.toString()
+            )
+        } catch (e: RuntimeException) {etX.setText(e.message)}
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/beige"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingTop="60dp"
+    android:paddingHorizontal="10dp"
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".AnswerLog">
+
+    <ListView
+        android:id="@+id/lv_list_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:divider="@color/brown"
+        android:dividerHeight="1dp"
+        android:padding="8dp"/>
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="32dp"
+        android:text="No Answers Logged\nPlease make use of Dumbass Calculator Mk 2"
+        android:textColor="@color/dark_brown"
+        android:textSize="16sp"
+        android:fontFamily="@font/milky_vintage"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_remove_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Theme.DumbassCalculatorMk2.Button"
+        android:text="Remove All" />
+
+</LinearLayout>

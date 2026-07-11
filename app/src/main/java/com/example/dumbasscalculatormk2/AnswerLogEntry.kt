@@ -4,5 +4,5 @@ class AnswerLogEntry(
     val id: Long,
     val program: String,
     val equation: String,
-    val answer: Double
+    val answer: String
 )

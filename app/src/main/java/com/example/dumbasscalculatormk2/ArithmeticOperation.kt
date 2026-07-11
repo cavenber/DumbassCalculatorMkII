@@ -97,7 +97,10 @@ class ArithmeticOperation : Fragment() {
             ?.setOnClickListener { input.append("%") }
 
         view?.findViewById<Button>(R.id.btnExecute)
-            ?.setOnClickListener { calculate() }
+            ?.setOnClickListener {
+                calculate()
+                answerLog()
+            }
 
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
@@ -112,6 +115,9 @@ class ArithmeticOperation : Fragment() {
                     input.setText(input.text?.delete(length - 1, length))
                 }
             }
+
+        view?.findViewById<Button>(R.id.btnAnswer)
+            ?.setOnClickListener { input.append(DBHelper(requireContext()).getMostRecentAnswer()) }
     }
 
     fun inputSpecial(input: EditText) {
@@ -165,9 +171,14 @@ class ArithmeticOperation : Fragment() {
     fun calculate() {
         try {
             answer.setText(Keval.eval(equation.text.toString()).toString())
-
-            DBHelper(requireContext()).saveAnswer("Arithmetic Operation", equation.text.toString(), answer.text.toString().toDouble())
-
         } catch (e: RuntimeException) {answer.setText("You fucking idiot.")}
+    }
+
+    fun answerLog() {
+        DBHelper(requireContext()).saveAnswer(
+            "Arithmetic Operation",
+            equation.text.toString(),
+            answer.text.toString()
+        )
     }
 }

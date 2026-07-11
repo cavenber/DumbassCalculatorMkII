@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().replace(R.id.program_container, ArithmeticOperation()).commit()
         }
 
+        // sidebar item selection logic
         nv_side.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.snv_arithmetic_operation -> {
@@ -72,15 +73,21 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
+    // options menu aka 3 dots thingy's initiation logic
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
+        return true
+    }
+
+    // options menu item selection logic
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.om_display_answer -> {
+                supportFragmentManager.beginTransaction().replace(R.id.program_container, AnswerLog()).commit()
+
+            }
+        }
+        tv_snv.text = item.title
         return true
     }
 }
