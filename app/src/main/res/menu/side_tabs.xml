@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/snv_basic_cal"
         android:title="Basic Caluclations">
         <menu>
             <item
@@ -16,13 +15,38 @@
     </item>
 
     <item
-        android:id="@+id/snv_variation"
         android:title="Variation">
         <menu>
             <item
                 android:id="@+id/snv_variation_direct"
                 android:title="Direct Variation" />
+
+            <item
+                android:id="@+id/snv_variation_inverse"
+                android:title="Inverse Variation" />
         </menu>
     </item>
+
+    <item
+        android:title="Sequence &amp; Series">
+        <menu>
+            <item
+                android:id="@+id/snv_arithmetic_sequence"
+                android:title="Arithmetic Sequence" />
+
+            <item
+                android:id="@+id/snv_arithmetic_series"
+                android:title="Arithmetic Series" />
+
+            <item
+                android:id="@+id/snv_geometric_sequence"
+                android:title="Geometric Sequence" />
+
+            <item
+                android:id="@+id/snv_geometric_series"
+                android:title="Geometric Series" />
+        </menu>
+    </item>
+
 
 </menu>

@@ -2,5 +2,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/om_display_answer"
-        android:title="Answers" />
+        android:title="Answer Logs" />
 </menu>

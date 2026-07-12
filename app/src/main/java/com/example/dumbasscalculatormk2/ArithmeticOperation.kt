@@ -20,7 +20,7 @@ class ArithmeticOperation : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.arithmetic_operation, container, false)
+        return inflater.inflate(R.layout.fragment_arithmetic_operation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,8 +98,9 @@ class ArithmeticOperation : Fragment() {
 
         view?.findViewById<Button>(R.id.btnExecute)
             ?.setOnClickListener {
-                calculate()
-                answerLog()
+                if (calculate()) {
+                    answerLog()
+                }
             }
 
         view?.findViewById<Button>(R.id.btnReset)
@@ -168,10 +169,14 @@ class ArithmeticOperation : Fragment() {
             ?.setOnClickListener { input.append(",") }
     }
 
-    fun calculate() {
+    fun calculate() : Boolean {
         try {
             answer.setText(Keval.eval(equation.text.toString()).toString())
-        } catch (e: RuntimeException) {answer.setText("You fucking idiot.")}
+            return true
+        } catch (e: RuntimeException) {
+            answer.setText("You fucking idiot.")
+            return false
+        }
     }
 
     fun answerLog() {

@@ -25,7 +25,7 @@ class QuadraticEquation : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.quadratic_equation, container, false)
+        return inflater.inflate(R.layout.fragment_quadratic_equation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,7 +34,6 @@ class QuadraticEquation : Fragment() {
         etA = view.findViewById<EditText>(R.id.qe_a)
         etB = view.findViewById<EditText>(R.id.qe_b)
         etC = view.findViewById<EditText>(R.id.qe_c)
-
         etX = view.findViewById<EditText>(R.id.qe_x)
 
         etA.showSoftInputOnFocus = false
@@ -119,8 +118,9 @@ class QuadraticEquation : Fragment() {
 
         view?.findViewById<Button>(R.id.btnExecute)
             ?.setOnClickListener {
-                calculate()
-                answerLog()
+                if (calculate()){
+                    answerLog()
+                }
             }
 
         view?.findViewById<Button>(R.id.btnReset)
@@ -147,8 +147,7 @@ class QuadraticEquation : Fragment() {
             ?.setOnClickListener { selected?.append(DBHelper(requireContext()).getMostRecentAnswer()) }
     }
 
-
-    fun calculate() {
+    fun calculate() : Boolean {
         try { // write calculations here
             val a: Double = Keval.eval(etA.text.toString())
             val b: Double = Keval.eval(etB.text.toString())
@@ -161,25 +160,27 @@ class QuadraticEquation : Fragment() {
             } else if (discriminant == 0.0) {
                 etX.setText(((-b + (b.pow(2) - 4 * (a * c)).pow(0.5)) / (2 * a)).toString())
             } else if (discriminant > 0) {
-                val x1: Double = (-b + (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
-                val x2: Double = (-b - (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+                val x1 = (-b + (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+                val x2 = (-b - (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
 
                 etX.setText(String.format("%s or %s", x1.toString(), x2.toString()))
             } else {
                 etX.setText("You fucking idiot.")
             }
+
+            return true
         } catch (e: RuntimeException) {
             etX.setText("You fucking idiot.")
+            return false
         }
     }
 
     fun answerLog() {
-        try {
-            DBHelper(requireContext()).saveAnswer(
-                "Quadratic Equation",
-                String.format("%sx² + %sx + %s = 0", etA.text.toString(), etB.text.toString(), etC.text.toString()),
-                etX.text.toString()
-            )
-        } catch (e: RuntimeException) {etX.setText(e.message)}
+        DBHelper(requireContext()).saveAnswer(
+            "Quadratic Equation",
+            String.format("%sx² + %sx + %s = 0", etA.text.toString(), etB.text.toString(), etC.text.toString()),
+            etX.text.toString()
+        )
+
     }
 }

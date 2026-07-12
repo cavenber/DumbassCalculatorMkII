@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/beige"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingTop="60dp"
+    android:paddingHorizontal="10dp"
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".QuadraticEquation">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:textColor="@color/dark_brown"
+        android:fontFamily="@font/milky_vintage"
+        android:text="ax² + bx + c = 0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="a = " />
+
+        <EditText
+            android:id="@+id/qe_a"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="b = " />
+
+        <EditText
+            android:id="@+id/qe_b"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="c = " />
+
+        <EditText
+            android:id="@+id/qe_c"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="x = " />
+
+        <EditText
+            android:id="@+id/qe_x"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:focusable="false"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/input_base"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"/>
+
+</LinearLayout>

@@ -4,6 +4,7 @@
         <!-- Customize your light theme here. -->
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="fontFamily">@font/milky_vintage</item>
+        <item name="android:divider">@color/brown</item>
         <item name="android:listDivider">@color/brown</item>
     </style>
 

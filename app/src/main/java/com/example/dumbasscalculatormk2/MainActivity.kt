@@ -50,21 +50,45 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.program_container, ArithmeticOperation()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                ArithmeticOperation()).commit()
         }
 
         // sidebar item selection logic
         nv_side.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.snv_arithmetic_operation -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.program_container, ArithmeticOperation()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        ArithmeticOperation()).commit()
 
                 }
                 R.id.snv_quadratic_equation -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.program_container, QuadraticEquation()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        QuadraticEquation()).commit()
                 }
                 R.id.snv_variation_direct -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.program_container, DirectVariation()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        DirectVariation()).commit()
+                }
+                R.id.snv_variation_inverse -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        InverseVariation()).commit()
+                }
+                R.id.snv_arithmetic_sequence -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        ArithmeticSequence()).commit()
+                }
+                R.id.snv_arithmetic_series -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        ArithmeticSeries()).commit()
+                }
+                R.id.snv_geometric_sequence -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        GeometricSequence()).commit()
+                }
+                R.id.snv_geometric_series -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        GeometricSeries()).commit()
                 }
             }
             tv_snv.text = item.title
