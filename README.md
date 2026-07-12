@@ -8,7 +8,7 @@ To install ***Dumbass Calculator Mark 2*** onto your device.
 2. Go to the latest release
 3. Download the apk file
 4. Open the apk file
-5. Disregard the warnings Google Play gives you (If you suspect this program a virus. Please follow the instructions)
+5. Disregard the warnings Google Play gives you (If you suspect this program is a virus. Please follow the instructions)
 6. Wait for it to install
 7. It should be installed
 8. Congratulations
