@@ -7,7 +7,6 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import com.notkamui.keval.Keval
 
 class ArithmeticOperation : Fragment() {
 
@@ -171,10 +170,10 @@ class ArithmeticOperation : Fragment() {
 
     fun calculate() : Boolean {
         try {
-            answer.setText(Keval.eval(equation.text.toString()).toString())
+            answer.setText(Num.toString(Num.evalToNum(equation.text.toString())))
             return true
         } catch (e: RuntimeException) {
-            answer.setText("You fucking idiot.")
+            answer.setText(R.string.displeased_message)
             return false
         }
     }
@@ -186,4 +185,5 @@ class ArithmeticOperation : Fragment() {
             answer.text.toString()
         )
     }
+
 }

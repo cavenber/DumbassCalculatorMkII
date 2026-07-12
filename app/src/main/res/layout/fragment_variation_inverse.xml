@@ -79,7 +79,7 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="y: " />
+            android:text="y = " />
 
         <EditText
             android:id="@+id/dv_y"

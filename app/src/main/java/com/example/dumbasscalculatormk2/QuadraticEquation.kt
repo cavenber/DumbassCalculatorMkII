@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.notkamui.keval.Keval
 import kotlin.math.pow
 
 class QuadraticEquation : Fragment() {
@@ -149,28 +148,31 @@ class QuadraticEquation : Fragment() {
 
     fun calculate() : Boolean {
         try { // write calculations here
-            val a: Double = Keval.eval(etA.text.toString())
-            val b: Double = Keval.eval(etB.text.toString())
-            val c: Double = Keval.eval(etC.text.toString())
+            val a: Double = Num.evalToNum(etA.text.toString())
+            val b: Double = Num.evalToNum(etB.text.toString())
+            val c: Double = Num.evalToNum(etC.text.toString())
 
             val discriminant = b.pow(2) - (4 * a * c)
 
             if (discriminant < 0) {
                 etX.setText("No Real Roots")
             } else if (discriminant == 0.0) {
-                etX.setText(((-b + (b.pow(2) - 4 * (a * c)).pow(0.5)) / (2 * a)).toString())
+                val x = ((-b + (b.pow(2) - 4 * (a * c)).pow(0.5)) / (2 * a))
+
+                etX.setText(Num.toString(x))
+
             } else if (discriminant > 0) {
                 val x1 = (-b + (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
                 val x2 = (-b - (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
 
-                etX.setText(String.format("%s or %s", x1.toString(), x2.toString()))
+                etX.setText(String.format("%s or %s", Num.toString(x1), Num.toString(x2)))
             } else {
-                etX.setText("You fucking idiot.")
+                throw RuntimeException("to go to catch block")
             }
 
             return true
         } catch (e: RuntimeException) {
-            etX.setText("You fucking idiot.")
+            etX.setText(R.string.displeased_message)
             return false
         }
     }
@@ -183,4 +185,6 @@ class QuadraticEquation : Fragment() {
         )
 
     }
+
+
 }

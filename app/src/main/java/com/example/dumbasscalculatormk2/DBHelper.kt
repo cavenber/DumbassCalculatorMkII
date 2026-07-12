@@ -71,7 +71,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         }
     }
 
-    fun getMostRecentAnswer(): String {
+    fun getMostRecentAnswer() : String {
         val db = readableDatabase
 
         db.query(
@@ -89,7 +89,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         }
     }
 
-    fun getAllAnswerLogs(): List<AnswerLogEntry> {
+    fun getAllAnswerLogs() : List<AnswerLogEntry> {
         val list = mutableListOf<AnswerLogEntry>()
         val db = readableDatabase
 

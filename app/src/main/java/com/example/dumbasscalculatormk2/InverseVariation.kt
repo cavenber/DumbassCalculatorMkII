@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import com.notkamui.keval.Keval
 
 class InverseVariation : Fragment() {
 
@@ -145,31 +144,31 @@ class InverseVariation : Fragment() {
     fun calculate() : Boolean {
         try { // write calculations here
             if (etK.text.toString().isEmpty()) {
-                val x = Keval.eval(etX.text.toString())
-                val y = Keval.eval(etY.text.toString())
+                val x = Num.evalToNum(etX.text.toString())
+                val y = Num.evalToNum(etY.text.toString())
                 etEmpty = etK
 
                 val k = y * x
 
-                etK.setText(k.toString())
+                etK.setText(Num.toString(k))
 
             } else if (etY.text.toString().isEmpty()) {
-                val x = Keval.eval(etX.text.toString())
-                val k = Keval.eval(etK.text.toString())
+                val x = Num.evalToNum(etX.text.toString())
+                val k = Num.evalToNum(etK.text.toString())
                 etEmpty = etY
 
                 val y = k / x
 
-                etY.setText(y.toString())
+                etY.setText(Num.toString(y))
 
             } else if (etX.text.toString().isEmpty()) {
-                val k = Keval.eval(etK.text.toString())
-                val y = Keval.eval(etY.text.toString())
+                val k = Num.evalToNum(etK.text.toString())
+                val y = Num.evalToNum(etY.text.toString())
                 etEmpty = etX
 
                 val x = k / y
 
-                etX.setText(x.toString())
+                etX.setText(Num.toString(x))
 
             } else {
                 throw RuntimeException("to go to catch block")
@@ -177,7 +176,7 @@ class InverseVariation : Fragment() {
 
             return true
         } catch (e: RuntimeException) {
-            etY.setText("You fucking idiot.")
+            etY.setText(R.string.displeased_message)
             return false
         }
     }

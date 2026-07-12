@@ -6,6 +6,7 @@
     <string name="quadratic_equation">Quadratic Equation</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="displeased_message">error due to idiotic actions</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">the nerd who made this is too lazy to finish this yet</string>
 </resources>

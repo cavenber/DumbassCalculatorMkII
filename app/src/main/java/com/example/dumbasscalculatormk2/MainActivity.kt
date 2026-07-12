@@ -108,7 +108,6 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.om_display_answer -> {
                 supportFragmentManager.beginTransaction().replace(R.id.program_container, AnswerLog()).commit()
-
             }
         }
         tv_snv.text = item.title
