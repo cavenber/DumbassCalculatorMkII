@@ -182,6 +182,7 @@ class ArithmeticOperation : Fragment() {
         DBHelper(requireContext()).saveAnswer(
             "Arithmetic Operation",
             equation.text.toString(),
+            "",
             answer.text.toString()
         )
     }

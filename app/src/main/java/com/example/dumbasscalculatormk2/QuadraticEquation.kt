@@ -180,7 +180,8 @@ class QuadraticEquation : Fragment() {
     fun answerLog() {
         DBHelper(requireContext()).saveAnswer(
             "Quadratic Equation",
-            String.format("%sx² + %sx + %s = 0", etA.text.toString(), etB.text.toString(), etC.text.toString()),
+            String.format("a = %s | b = %s | c = %s", etA.text.toString(), etB.text.toString(), etC.text.toString()),
+            "x",
             etX.text.toString()
         )
 

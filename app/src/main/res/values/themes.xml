@@ -4,13 +4,22 @@
         <!-- Customize your light theme here. -->
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="fontFamily">@font/milky_vintage</item>
-        <item name="android:divider">@color/brown</item>
+    </style>
+
+    <style name="NavigationDrawer" parent="Widget.Material3.NavigationView">
+        <item name="android:fontFamily">@font/milky_vintage</item>
+        <item name="fontFamily">@font/milky_vintage</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.NavigationDrawer</item>
+    </style>
+    
+    <style name="ThemeOverlay.NavigationDrawer" parent="">
         <item name="android:listDivider">@color/brown</item>
+        <item name="colorOutline">@color/brown</item>
     </style>
 
     <style name="Theme.DumbassCalculatorMk2" parent="Base.Theme.DumbassCalculatorMk2" />
 
-    <style name="Theme.DumbassCalculatorMk2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
@@ -40,7 +49,7 @@
         <item name="android:textColor">@color/dark_brown</item>
     </style>
 
-    <style name="Theme.DumbassCalculatorMk2.Button" parent="Widget.Material3.Button">
+    <style name="Button" parent="Widget.Material3.Button">
         <item name="android:textSize">30sp</item>
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="android:textColor">@color/light_beige</item>
@@ -53,7 +62,7 @@
         <item name="android:insetBottom">0dp</item>
     </style>
 
-    <style name="Theme.DumbassCalculatorMk2.Button.smol" parent="Widget.Material3.Button">
+    <style name="Button.smol" parent="Widget.Material3.Button">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="android:textColor">@color/light_beige</item>

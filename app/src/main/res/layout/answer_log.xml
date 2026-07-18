@@ -38,7 +38,7 @@
         android:id="@+id/btn_remove_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Theme.DumbassCalculatorMk2.Button"
+        style="@style/Button"
         android:text="Remove All" />
 
 </LinearLayout>

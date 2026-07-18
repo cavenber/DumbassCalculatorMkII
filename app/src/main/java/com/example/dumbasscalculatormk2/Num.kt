@@ -13,7 +13,7 @@ class Num {
         }
 
         fun evalToNum(str: String) : Double {
-            if (str == "2+2") {
+            if (str == "2+2") { // easter egg for the radiohead song 2+2=5
                 return 5.0
             }
 

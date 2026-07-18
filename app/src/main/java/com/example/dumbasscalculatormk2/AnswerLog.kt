@@ -61,7 +61,7 @@ class AnswerLog : Fragment() {
 
             view.findViewById<TextView>(R.id.tv_program).text = "${item.program}"
             view.findViewById<TextView>(R.id.tv_equation).text = "${item.equation}"
-            view.findViewById<TextView>(R.id.tv_answer).text = "Answer: ${item.answer}"
+            view.findViewById<TextView>(R.id.tv_answer).text = "Answer: ${item.answerVar} = ${item.answer}"
 
             return view
         }

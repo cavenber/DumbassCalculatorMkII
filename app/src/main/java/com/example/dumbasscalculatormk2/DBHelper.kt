@@ -13,7 +13,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
 ) {
     companion object {
         private const val DATABASE_NAME = "dumbass_calculator.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
 
         const val TABLE_ANSWER_LOG = "AnswerLog"
     }
@@ -25,6 +25,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
                     _id         INTEGER PRIMARY KEY AUTOINCREMENT,
                     program     TEXT    NOT NULL,
                     equation    TEXT    NOT NULL,
+                    answerVar   TEXT    NOT NULL,
                     answer      TEXT    NOT NULL
                 )
             """.trimIndent()
@@ -39,6 +40,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
     fun saveAnswer(
         program: String,
         equation: String,
+        answerVar: String,
         answer: String
     ) {
         val db = writableDatabase
@@ -48,6 +50,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
             val logValues = ContentValues().apply {
                 put("program", program)
                 put("equation", equation)
+                put("answerVar", answerVar)
                 put("answer", answer)
             }
 
@@ -108,6 +111,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
                         id = cursor.getLong(cursor.getColumnIndexOrThrow("_id")),
                         program = cursor.getString(cursor.getColumnIndexOrThrow("program")),
                         equation = cursor.getString(cursor.getColumnIndexOrThrow("equation")),
+                        answerVar = cursor.getString(cursor.getColumnIndexOrThrow("answerVar")),
                         answer = cursor.getString(cursor.getColumnIndexOrThrow("answer"))
                     )
                 )

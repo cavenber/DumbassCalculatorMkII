@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/btnSqrt"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/btnCbrt"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/btnNthrt"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/btnSin"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -63,7 +63,7 @@
 
     <Button
         android:id="@+id/btnAsin"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -78,7 +78,7 @@
 
     <Button
         android:id="@+id/btnLn"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -91,7 +91,7 @@
 
     <Button
         android:id="@+id/btnLog10"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -104,7 +104,7 @@
 
     <Button
         android:id="@+id/btnLog2"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -117,7 +117,7 @@
 
     <Button
         android:id="@+id/btnCos"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -130,7 +130,7 @@
 
     <Button
         android:id="@+id/btnAcos"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -145,7 +145,7 @@
 
     <Button
         android:id="@+id/btnPi"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -159,7 +159,7 @@
 
     <Button
         android:id="@+id/btnE"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -173,7 +173,7 @@
 
     <Button
         android:id="@+id/btnComma"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -186,7 +186,7 @@
 
     <Button
         android:id="@+id/btnTan"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"
@@ -199,7 +199,7 @@
 
     <Button
         android:id="@+id/btnAtan"
-        style="@style/Theme.DumbassCalculatorMk2.Button.smol"
+        style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"

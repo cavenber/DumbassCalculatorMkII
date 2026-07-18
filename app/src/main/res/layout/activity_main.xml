@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/beige"
+    android:backgroundTint="@color/beige"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +21,7 @@
             android:background="@color/dark_brown"
             app:title="@string/title"
             app:titleTextColor="@color/light_beige"
-            android:theme="@style/Theme.DumbassCalculatorMk2.AppBarOverlay"
+            android:theme="@style/AppBarOverlay"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,17 +55,41 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nv_side"
+        style="@style/NavigationDrawer"
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:paddingTop="40dp"
-        android:theme="@style/Base.Theme.DumbassCalculatorMk2"
         app:menu="@menu/side_tabs"
         android:fitsSystemWindows="true"
         android:background="@color/beige"
         app:itemTextColor="@color/dark_brown"
+        app:headerLayout="@layout/nav_header"
         app:subheaderColor="@color/dark_brown"
         app:subheaderTextAppearance="@style/NavbarSubheaderText"
-        app:itemTextAppearance="@style/NavbarText" />
+        app:itemTextAppearance="@style/NavbarText" >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:background="@color/dark_brown">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:padding="15dp"
+                android:gravity="center"
+                android:fontFamily="@font/milky_vintage"
+                android:textColor="@color/light_beige"
+                android:textSize="16sp"
+                android:text="Made by Cavenber" />
+
+
+        </LinearLayout>
+        
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

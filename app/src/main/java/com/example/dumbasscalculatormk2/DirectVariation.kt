@@ -175,6 +175,7 @@ class DirectVariation : Fragment() {
             }
 
             return true
+
         } catch (e: RuntimeException) {
             etY.setText(R.string.displeased_message)
             return false
@@ -185,19 +186,22 @@ class DirectVariation : Fragment() {
         if (etEmpty == etK) {
             DBHelper(requireContext()).saveAnswer(
                 "Direct Variation",
-                String.format("%s = k * %s", etY.text.toString(), etX.text.toString()),
+                String.format("x = %s | y = %s", etY.text.toString(), etX.text.toString()),
+                "k",
                 etEmpty.text.toString()
             )
         } else if (etEmpty == etY) {
             DBHelper(requireContext()).saveAnswer(
                 "Direct Variation",
-                String.format("y = %s * %s", etK.text.toString(), etX.text.toString()),
+                String.format("x = %s | k = %s", etK.text.toString(), etX.text.toString()),
+                "y",
                 etEmpty.text.toString()
             )
         } else if (etEmpty == etX) {
             DBHelper(requireContext()).saveAnswer(
                 "Direct Variation",
-                String.format("%s = %s * x", etY.text.toString(), etK.text.toString()),
+                String.format("k = %s | y = %s", etY.text.toString(), etK.text.toString()),
+                "x",
                 etEmpty.text.toString()
             )
         }
