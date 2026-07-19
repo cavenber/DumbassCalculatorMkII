@@ -1,4 +1,4 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 
-class ArithmeticSequence : Fragment() {
+class DirectVariation : Fragment() {
 
-    lateinit var etT1: EditText
-    lateinit var etT2: EditText
-    lateinit var etN: EditText
-    lateinit var etTn: EditText
+    lateinit var etX: EditText
+    lateinit var etK: EditText
+    lateinit var etY: EditText
 
     lateinit var etEmpty: EditText
+
     private var selected : EditText? = null // universal selection variable
 
     override fun onCreateView(
@@ -23,21 +23,19 @@ class ArithmeticSequence : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_arithmetic_sequence, container, false)
+        return inflater.inflate(R.layout.fragment_variation_direct, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etT1 = view.findViewById<EditText>(R.id.asq_t1)
-        etT2 = view.findViewById<EditText>(R.id.asq_t2)
-        etN = view.findViewById<EditText>(R.id.asq_n)
-        etTn = view.findViewById<EditText>(R.id.asq_tn)
+        etX = view.findViewById<EditText>(R.id.dv_x)
+        etK = view.findViewById<EditText>(R.id.dv_k)
+        etY = view.findViewById<EditText>(R.id.dv_y)
 
-        etT1.showSoftInputOnFocus = false
-        etT2.showSoftInputOnFocus = false
-        etN.showSoftInputOnFocus = false
-        etTn.showSoftInputOnFocus = false
+        etX.showSoftInputOnFocus = false
+        etK.showSoftInputOnFocus = false
+        etY.showSoftInputOnFocus = false
 
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -45,10 +43,9 @@ class ArithmeticSequence : Fragment() {
             }
         }
 
-        etT1.onFocusChangeListener = listener
-        etT2.onFocusChangeListener = listener
-        etN.onFocusChangeListener = listener
-        etTn.onFocusChangeListener = listener
+        etX.onFocusChangeListener = listener
+        etK.onFocusChangeListener = listener
+        etY.onFocusChangeListener = listener
 
         inputBase()
     }
@@ -125,10 +122,9 @@ class ArithmeticSequence : Fragment() {
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
                 // input fields
-                etT1.setText("")
-                etT2.setText("")
-                etN.setText("")
-                etTn.setText("")
+                etX.setText("")
+                etK.setText("")
+                etY.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -147,55 +143,65 @@ class ArithmeticSequence : Fragment() {
 
     fun calculate() : Boolean {
         try { // write calculations here
-            if (etTn.text.toString().isEmpty()) {
-                val t1 = Num.evalToNum(etT1.text.toString())
-                val t2 = Num.evalToNum(etT2.text.toString())
-                val n = Num.evalToNum(etN.text.toString())
-                etEmpty = etTn
+            if (etK.text.toString().isEmpty()) {
+                val x = Num.evalToNum(etX.text.toString())
+                val y = Num.evalToNum(etY.text.toString())
+                etEmpty = etK
 
-                val a = t1
-                val d = t2 - t1
-                val tn = a + (n - 1) * d
+                val k = y / x
 
-                etTn.setText(Num.toString(tn))
+                etK.setText(Num.toString(k))
 
-            } else if (etN.text.toString().isEmpty()) {
-                val t1 = Num.evalToNum(etT1.text.toString())
-                val t2 = Num.evalToNum(etT2.text.toString())
-                val tn = Num.evalToNum(etTn.text.toString())
-                etEmpty = etN
+            } else if (etY.text.toString().isEmpty()) {
+                val x = Num.evalToNum(etX.text.toString())
+                val k = Num.evalToNum(etK.text.toString())
+                etEmpty = etY
 
-                val a = t1
-                val d = t2 - t1
-                val n = ((tn - a) / d) + 1
+                val y = x * k
 
-                etN.setText(Num.toString(n))
+                etY.setText(Num.toString(y))
+
+            } else if (etX.text.toString().isEmpty()) {
+                val k = Num.evalToNum(etK.text.toString())
+                val y = Num.evalToNum(etY.text.toString())
+                etEmpty = etX
+
+                val x = y / k
+
+                etX.setText(Num.toString(x))
 
             } else {
-                throw RuntimeException("go to catch block")
+                throw RuntimeException("to go to catch block")
             }
 
             return true
 
         } catch (e: RuntimeException) {
-            etTn.setText(R.string.displeased_message)
+            etY.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        if (etEmpty == etTn) {
+        if (etEmpty == etK) {
             DBHelper(requireContext()).saveAnswer(
-                "Arithmetic Sequence",
-                String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
-                "T(n)",
+                "Direct Variation",
+                String.format("x = %s | y = %s", etY.text.toString(), etX.text.toString()),
+                "k",
                 etEmpty.text.toString()
             )
-        } else if (etEmpty == etN) {
+        } else if (etEmpty == etY) {
             DBHelper(requireContext()).saveAnswer(
-                "Arithmetic Sequence",
-                String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
-                "n",
+                "Direct Variation",
+                String.format("x = %s | k = %s", etK.text.toString(), etX.text.toString()),
+                "y",
+                etEmpty.text.toString()
+            )
+        } else if (etEmpty == etX) {
+            DBHelper(requireContext()).saveAnswer(
+                "Direct Variation",
+                String.format("k = %s | y = %s", etY.text.toString(), etK.text.toString()),
+                "x",
                 etEmpty.text.toString()
             )
         }

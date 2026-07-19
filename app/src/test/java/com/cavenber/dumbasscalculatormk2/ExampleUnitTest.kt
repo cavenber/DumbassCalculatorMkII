@@ -1,4 +1,4 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,15 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 
-class GeometricSeries : Fragment() {
+class InverseVariation : Fragment() {
 
-    lateinit var etT1: EditText
-    lateinit var etT2: EditText
-    lateinit var etN: EditText
-    lateinit var etTn: EditText
-    lateinit var etSn: EditText
+    lateinit var etX: EditText
+    lateinit var etK: EditText
+    lateinit var etY: EditText
 
     lateinit var etEmpty: EditText
+
     private var selected : EditText? = null // universal selection variable
 
     override fun onCreateView(
@@ -24,22 +23,19 @@ class GeometricSeries : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_geometric_series, container, false)
+        return inflater.inflate(R.layout.fragment_variation_inverse, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etT1 = view.findViewById<EditText>(R.id.gsr_t1)
-        etT2 = view.findViewById<EditText>(R.id.gsr_t2)
-        etN = view.findViewById<EditText>(R.id.gsr_n)
-        etTn = view.findViewById<EditText>(R.id.gsr_tn)
-        etSn = view.findViewById<EditText>(R.id.gsr_sn)
+        etX = view.findViewById<EditText>(R.id.dv_x)
+        etK = view.findViewById<EditText>(R.id.dv_k)
+        etY = view.findViewById<EditText>(R.id.dv_y)
 
-        etT1.showSoftInputOnFocus = false
-        etT2.showSoftInputOnFocus = false
-        etN.showSoftInputOnFocus = false
-        etTn.showSoftInputOnFocus = false
+        etX.showSoftInputOnFocus = false
+        etK.showSoftInputOnFocus = false
+        etY.showSoftInputOnFocus = false
 
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -47,10 +43,9 @@ class GeometricSeries : Fragment() {
             }
         }
 
-        etT1.onFocusChangeListener = listener
-        etT2.onFocusChangeListener = listener
-        etN.onFocusChangeListener = listener
-        etTn.onFocusChangeListener = listener
+        etX.onFocusChangeListener = listener
+        etK.onFocusChangeListener = listener
+        etY.onFocusChangeListener = listener
 
         inputBase()
     }
@@ -127,11 +122,9 @@ class GeometricSeries : Fragment() {
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
                 // input fields
-                etT1.setText("")
-                etT2.setText("")
-                etN.setText("")
-                etTn.setText("")
-                etSn.setText("")
+                etX.setText("")
+                etK.setText("")
+                etY.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -150,57 +143,66 @@ class GeometricSeries : Fragment() {
 
     fun calculate() : Boolean {
         try { // write calculations here
-            if (etTn.text.toString().isEmpty()) {
-                val t1 = Num.evalToNum(etT1.text.toString())
-                val t2 = Num.evalToNum(etT2.text.toString())
-                val n = Num.evalToNum(etN.text.toString())
-                etEmpty = etTn
+            if (etK.text.toString().isEmpty()) {
+                val x = Num.evalToNum(etX.text.toString())
+                val y = Num.evalToNum(etY.text.toString())
+                etEmpty = etK
 
-                val a = t1
-                val r = t2 / t1
-                val sn = (a * (1 - (Math.pow(r, n)))) / (1 - r)
+                val k = y * x
 
-                etSn.setText(Num.toString(sn))
+                etK.setText(Num.toString(k))
 
-            } else if (etN.text.toString().isEmpty()) {
-                val t1 = Num.evalToNum(etT1.text.toString())
-                val t2 = Num.evalToNum(etT2.text.toString())
-                val tn = Num.evalToNum(etTn.text.toString())
-                etEmpty = etN
+            } else if (etY.text.toString().isEmpty()) {
+                val x = Num.evalToNum(etX.text.toString())
+                val k = Num.evalToNum(etK.text.toString())
+                etEmpty = etY
 
-                val a = t1
-                val r = t2 / t1
-                val n = kotlin.math.log(tn / a, r) + 1
-                val Sn = (a * (1 - (Math.pow(r, n)))) / (1 - r)
+                val y = k / x
 
-                etSn.setText(Num.toString(Sn))
+                etY.setText(Num.toString(y))
+
+            } else if (etX.text.toString().isEmpty()) {
+                val k = Num.evalToNum(etK.text.toString())
+                val y = Num.evalToNum(etY.text.toString())
+                etEmpty = etX
+
+                val x = k / y
+
+                etX.setText(Num.toString(x))
 
             } else {
-                throw RuntimeException("go to catch block")
+                throw RuntimeException("to go to catch block")
             }
 
             return true
 
         } catch (e: RuntimeException) {
-            etSn.setText(R.string.displeased_message)
+            etY.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        if (etEmpty == etTn) {
+        if (etEmpty == etK) {
             DBHelper(requireContext()).saveAnswer(
-                "Geometric Series",
-                String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
-                "S(n)",
-                etSn.text.toString()
+                "Inverse Variation",
+                String.format("x = %s | y = %s", etX.text.toString(), etY.text.toString()),
+                "k",
+                etEmpty.text.toString()
             )
-        } else if (etEmpty == etN) {
+        } else if (etEmpty == etY) {
             DBHelper(requireContext()).saveAnswer(
-                "Geometric Series",
-                String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
-                "S(n)",
-                etSn.text.toString()
+                "Inverse Variation",
+                String.format("x = %s | k = %S", etX.text.toString(), etK.text.toString()),
+                "y",
+                etEmpty.text.toString()
+            )
+        } else if (etEmpty == etX) {
+            DBHelper(requireContext()).saveAnswer(
+                "Inverse Variation",
+                String.format("k = %s | y = %s", etK.text.toString(), etY.text.toString()),
+                "x",
+                etEmpty.text.toString()
             )
         }
     }

@@ -1,56 +1,59 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import kotlin.math.pow
 
-class InverseVariation : Fragment() {
+class QuadraticEquation : Fragment() {
 
-    lateinit var etX: EditText
-    lateinit var etK: EditText
-    lateinit var etY: EditText
-
-    lateinit var etEmpty: EditText
+    lateinit var etA : EditText
+    lateinit var etB : EditText
+    lateinit var etC : EditText
 
     private var selected : EditText? = null // universal selection variable
 
+    lateinit var etX : EditText
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_variation_inverse, container, false)
+        return inflater.inflate(R.layout.fragment_quadratic_equation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etX = view.findViewById<EditText>(R.id.dv_x)
-        etK = view.findViewById<EditText>(R.id.dv_k)
-        etY = view.findViewById<EditText>(R.id.dv_y)
+        etA = view.findViewById<EditText>(R.id.qe_a)
+        etB = view.findViewById<EditText>(R.id.qe_b)
+        etC = view.findViewById<EditText>(R.id.qe_c)
+        etX = view.findViewById<EditText>(R.id.qe_x)
 
-        etX.showSoftInputOnFocus = false
-        etK.showSoftInputOnFocus = false
-        etY.showSoftInputOnFocus = false
+        etA.showSoftInputOnFocus = false
+        etB.showSoftInputOnFocus = false
+        etC.showSoftInputOnFocus = false
 
+        // focus change listener
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 selected = v as EditText
             }
         }
 
-        etX.onFocusChangeListener = listener
-        etK.onFocusChangeListener = listener
-        etY.onFocusChangeListener = listener
+        etA.onFocusChangeListener = listener
+        etB.onFocusChangeListener = listener
+        etC.onFocusChangeListener = listener
 
-        inputBase()
+        inputBase(etX)
     }
 
-    fun inputBase() {
+    fun inputBase(output: EditText) {
 
         view?.findViewById<Button>(R.id.btn0)
             ?.setOnClickListener { selected?.append("0") }
@@ -122,9 +125,11 @@ class InverseVariation : Fragment() {
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
                 // input fields
-                etX.setText("")
-                etK.setText("")
-                etY.setText("")
+                etA.setText("")
+                etB.setText("")
+                etC.setText("")
+
+                output.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -143,67 +148,44 @@ class InverseVariation : Fragment() {
 
     fun calculate() : Boolean {
         try { // write calculations here
-            if (etK.text.toString().isEmpty()) {
-                val x = Num.evalToNum(etX.text.toString())
-                val y = Num.evalToNum(etY.text.toString())
-                etEmpty = etK
+            val a: Double = Num.evalToNum(etA.text.toString())
+            val b: Double = Num.evalToNum(etB.text.toString())
+            val c: Double = Num.evalToNum(etC.text.toString())
 
-                val k = y * x
+            val discriminant = b.pow(2) - (4 * a * c)
 
-                etK.setText(Num.toString(k))
-
-            } else if (etY.text.toString().isEmpty()) {
-                val x = Num.evalToNum(etX.text.toString())
-                val k = Num.evalToNum(etK.text.toString())
-                etEmpty = etY
-
-                val y = k / x
-
-                etY.setText(Num.toString(y))
-
-            } else if (etX.text.toString().isEmpty()) {
-                val k = Num.evalToNum(etK.text.toString())
-                val y = Num.evalToNum(etY.text.toString())
-                etEmpty = etX
-
-                val x = k / y
+            if (discriminant < 0) {
+                etX.setText("No Real Roots")
+            } else if (discriminant == 0.0) {
+                val x = ((-b + (b.pow(2) - 4 * (a * c)).pow(0.5)) / (2 * a))
 
                 etX.setText(Num.toString(x))
 
+            } else if (discriminant > 0) {
+                val x1 = (-b + (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+                val x2 = (-b - (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+
+                etX.setText(String.format("%s or %s", Num.toString(x1), Num.toString(x2)))
             } else {
                 throw RuntimeException("to go to catch block")
             }
 
             return true
-
         } catch (e: RuntimeException) {
-            etY.setText(R.string.displeased_message)
+            etX.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        if (etEmpty == etK) {
-            DBHelper(requireContext()).saveAnswer(
-                "Inverse Variation",
-                String.format("x = %s | y = %s", etX.text.toString(), etY.text.toString()),
-                "k",
-                etEmpty.text.toString()
-            )
-        } else if (etEmpty == etY) {
-            DBHelper(requireContext()).saveAnswer(
-                "Inverse Variation",
-                String.format("x = %s | k = %S", etX.text.toString(), etK.text.toString()),
-                "y",
-                etEmpty.text.toString()
-            )
-        } else if (etEmpty == etX) {
-            DBHelper(requireContext()).saveAnswer(
-                "Inverse Variation",
-                String.format("k = %s | y = %s", etK.text.toString(), etY.text.toString()),
-                "x",
-                etEmpty.text.toString()
-            )
-        }
+        DBHelper(requireContext()).saveAnswer(
+            "Quadratic Equation",
+            String.format("a = %s | b = %s | c = %s", etA.text.toString(), etB.text.toString(), etC.text.toString()),
+            "x",
+            etX.text.toString()
+        )
+
     }
+
+
 }

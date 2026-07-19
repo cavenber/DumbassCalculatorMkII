@@ -1,4 +1,4 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 
-class GeometricSequence : Fragment() {
+class ArithmeticSequence : Fragment() {
 
     lateinit var etT1: EditText
     lateinit var etT2: EditText
@@ -17,21 +17,22 @@ class GeometricSequence : Fragment() {
 
     lateinit var etEmpty: EditText
     private var selected : EditText? = null // universal selection variable
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_geometric_sequence, container, false)
+        return inflater.inflate(R.layout.fragment_arithmetic_sequence, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etT1 = view.findViewById<EditText>(R.id.gsq_t1)
-        etT2 = view.findViewById<EditText>(R.id.gsq_t2)
-        etN = view.findViewById<EditText>(R.id.gsq_n)
-        etTn = view.findViewById<EditText>(R.id.gsq_tn)
+        etT1 = view.findViewById<EditText>(R.id.asq_t1)
+        etT2 = view.findViewById<EditText>(R.id.asq_t2)
+        etN = view.findViewById<EditText>(R.id.asq_n)
+        etTn = view.findViewById<EditText>(R.id.asq_tn)
 
         etT1.showSoftInputOnFocus = false
         etT2.showSoftInputOnFocus = false
@@ -153,8 +154,8 @@ class GeometricSequence : Fragment() {
                 etEmpty = etTn
 
                 val a = t1
-                val r = t2 / t1
-                val tn = a * (Math.pow(r, n - 1))
+                val d = t2 - t1
+                val tn = a + (n - 1) * d
 
                 etTn.setText(Num.toString(tn))
 
@@ -165,8 +166,8 @@ class GeometricSequence : Fragment() {
                 etEmpty = etN
 
                 val a = t1
-                val r = t2 / t1
-                val n = kotlin.math.log(tn / a, r) + 1
+                val d = t2 - t1
+                val n = ((tn - a) / d) + 1
 
                 etN.setText(Num.toString(n))
 
@@ -185,14 +186,14 @@ class GeometricSequence : Fragment() {
     fun answerLog() {
         if (etEmpty == etTn) {
             DBHelper(requireContext()).saveAnswer(
-                "Geometric Sequence",
+                "Arithmetic Sequence",
                 String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
                 "T(n)",
                 etEmpty.text.toString()
             )
         } else if (etEmpty == etN) {
             DBHelper(requireContext()).saveAnswer(
-                "Geometric Sequence",
+                "Arithmetic Sequence",
                 String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
                 "n",
                 etEmpty.text.toString()

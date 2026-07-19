@@ -1,4 +1,4 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import android.content.Context
 import android.os.Bundle
@@ -61,7 +61,13 @@ class AnswerLog : Fragment() {
 
             view.findViewById<TextView>(R.id.tv_program).text = "${item.program}"
             view.findViewById<TextView>(R.id.tv_equation).text = "${item.equation}"
-            view.findViewById<TextView>(R.id.tv_answer).text = "Answer: ${item.answerVar} = ${item.answer}"
+
+            if (item.answerVar == "") {
+                view.findViewById<TextView>(R.id.tv_answer).text = "Answer: ${item.answer}"
+            } else {
+                view.findViewById<TextView>(R.id.tv_answer).text = "Answer: ${item.answerVar} = ${item.answer}"
+            }
+
 
             return view
         }

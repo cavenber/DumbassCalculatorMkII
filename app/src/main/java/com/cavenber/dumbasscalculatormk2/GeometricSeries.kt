@@ -1,59 +1,61 @@
-package com.example.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.Fragment
-import kotlin.math.pow
 
-class QuadraticEquation : Fragment() {
+class GeometricSeries : Fragment() {
 
-    lateinit var etA : EditText
-    lateinit var etB : EditText
-    lateinit var etC : EditText
+    lateinit var etT1: EditText
+    lateinit var etT2: EditText
+    lateinit var etN: EditText
+    lateinit var etTn: EditText
+    lateinit var etSn: EditText
 
+    lateinit var etEmpty: EditText
     private var selected : EditText? = null // universal selection variable
 
-    lateinit var etX : EditText
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_quadratic_equation, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_geometric_series, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etA = view.findViewById<EditText>(R.id.qe_a)
-        etB = view.findViewById<EditText>(R.id.qe_b)
-        etC = view.findViewById<EditText>(R.id.qe_c)
-        etX = view.findViewById<EditText>(R.id.qe_x)
+        etT1 = view.findViewById<EditText>(R.id.gsr_t1)
+        etT2 = view.findViewById<EditText>(R.id.gsr_t2)
+        etN = view.findViewById<EditText>(R.id.gsr_n)
+        etTn = view.findViewById<EditText>(R.id.gsr_tn)
+        etSn = view.findViewById<EditText>(R.id.gsr_sn)
 
-        etA.showSoftInputOnFocus = false
-        etB.showSoftInputOnFocus = false
-        etC.showSoftInputOnFocus = false
+        etT1.showSoftInputOnFocus = false
+        etT2.showSoftInputOnFocus = false
+        etN.showSoftInputOnFocus = false
+        etTn.showSoftInputOnFocus = false
 
-        // focus change listener
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 selected = v as EditText
             }
         }
 
-        etA.onFocusChangeListener = listener
-        etB.onFocusChangeListener = listener
-        etC.onFocusChangeListener = listener
+        etT1.onFocusChangeListener = listener
+        etT2.onFocusChangeListener = listener
+        etN.onFocusChangeListener = listener
+        etTn.onFocusChangeListener = listener
 
-        inputBase(etX)
+        inputBase()
     }
 
-    fun inputBase(output: EditText) {
+    fun inputBase() {
 
         view?.findViewById<Button>(R.id.btn0)
             ?.setOnClickListener { selected?.append("0") }
@@ -125,11 +127,11 @@ class QuadraticEquation : Fragment() {
         view?.findViewById<Button>(R.id.btnReset)
             ?.setOnClickListener {
                 // input fields
-                etA.setText("")
-                etB.setText("")
-                etC.setText("")
-
-                output.setText("")
+                etT1.setText("")
+                etT2.setText("")
+                etN.setText("")
+                etTn.setText("")
+                etSn.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -148,44 +150,58 @@ class QuadraticEquation : Fragment() {
 
     fun calculate() : Boolean {
         try { // write calculations here
-            val a: Double = Num.evalToNum(etA.text.toString())
-            val b: Double = Num.evalToNum(etB.text.toString())
-            val c: Double = Num.evalToNum(etC.text.toString())
+            if (etTn.text.toString().isEmpty()) {
+                val t1 = Num.evalToNum(etT1.text.toString())
+                val t2 = Num.evalToNum(etT2.text.toString())
+                val n = Num.evalToNum(etN.text.toString())
+                etEmpty = etTn
 
-            val discriminant = b.pow(2) - (4 * a * c)
+                val a = t1
+                val r = t2 / t1
+                val sn = (a * (1 - (Math.pow(r, n)))) / (1 - r)
 
-            if (discriminant < 0) {
-                etX.setText("No Real Roots")
-            } else if (discriminant == 0.0) {
-                val x = ((-b + (b.pow(2) - 4 * (a * c)).pow(0.5)) / (2 * a))
+                etSn.setText(Num.toString(sn))
 
-                etX.setText(Num.toString(x))
+            } else if (etN.text.toString().isEmpty()) {
+                val t1 = Num.evalToNum(etT1.text.toString())
+                val t2 = Num.evalToNum(etT2.text.toString())
+                val tn = Num.evalToNum(etTn.text.toString())
+                etEmpty = etN
 
-            } else if (discriminant > 0) {
-                val x1 = (-b + (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
-                val x2 = (-b - (b.pow(2) - 4 * a * c).pow(0.5)) / (2 * a)
+                val a = t1
+                val r = t2 / t1
+                val n = kotlin.math.log(tn / a, r) + 1
+                val Sn = (a * (1 - (Math.pow(r, n)))) / (1 - r)
 
-                etX.setText(String.format("%s or %s", Num.toString(x1), Num.toString(x2)))
+                etSn.setText(Num.toString(Sn))
+
             } else {
-                throw RuntimeException("to go to catch block")
+                throw RuntimeException("go to catch block")
             }
 
             return true
+
         } catch (e: RuntimeException) {
-            etX.setText(R.string.displeased_message)
+            etSn.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        DBHelper(requireContext()).saveAnswer(
-            "Quadratic Equation",
-            String.format("a = %s | b = %s | c = %s", etA.text.toString(), etB.text.toString(), etC.text.toString()),
-            "x",
-            etX.text.toString()
-        )
-
+        if (etEmpty == etTn) {
+            DBHelper(requireContext()).saveAnswer(
+                "Geometric Series",
+                String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
+                "S(n)",
+                etSn.text.toString()
+            )
+        } else if (etEmpty == etN) {
+            DBHelper(requireContext()).saveAnswer(
+                "Geometric Series",
+                String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
+                "S(n)",
+                etSn.text.toString()
+            )
+        }
     }
-
-
 }
