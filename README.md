@@ -14,7 +14,7 @@ To install ***Dumbass Calculator Mark II*** onto your device.
 8. Congratulations
 9. You did it
 10. Why are you still here?
-11. Go use ***Dumbass Calculator Mark 2***
+11. Go use ***Dumbass Calculator Mark II***
 12. Come on go try it out
 13. Let's go...
 14. You're making this very awkward
