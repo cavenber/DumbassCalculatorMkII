@@ -6,16 +6,16 @@
         <menu>
             <item
                 android:id="@+id/snv_arithmetic_operation"
-                android:title="@string/arithmetic_operation" />
+                android:title="Arithmetic Operation" />
 
             <item
                 android:id="@+id/snv_quadratic_equation"
-                android:title="@string/quadratic_equation" />
+                android:title="Quadratic Equation" />
         </menu>
     </item>
 
     <item
-        android:title="Variation">
+        android:title="Variations">
         <menu>
             <item
                 android:id="@+id/snv_variation_direct"
@@ -45,6 +45,27 @@
             <item
                 android:id="@+id/snv_geometric_series"
                 android:title="Geometric Series" />
+        </menu>
+    </item>
+
+    <item
+        android:title="Geometry Calculations">
+        <menu>
+            <item
+                android:id="@+id/snv_mid_point"
+                android:title="Mid-Point" />
+
+            <item
+                android:id="@+id/snv_line_slope"
+                android:title="Line Slope" />
+
+            <item
+                android:id="@+id/snv_line_equation"
+                android:title="Line Equation" />
+
+            <item
+                android:id="@+id/snv_distance_formula"
+                android:title="Distance Formula" />
         </menu>
     </item>
 

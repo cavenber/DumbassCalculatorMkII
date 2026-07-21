@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".GeometricSeries">
+    tools:context=".LineSlope">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         android:textSize="28sp"
         android:textColor="@color/dark_brown"
         android:fontFamily="@font/milky_vintage"
-        android:text="S(n) = T(1) + T(2) + T(3)... T(n)"/>
+        android:text="m = y / x"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,10 +34,10 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="T(1) = " />
+            android:text="A(" />
 
         <EditText
-            android:id="@+id/gsr_t1"
+            android:id="@+id/ls_a"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -53,10 +53,18 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="T(2) = " />
+            android:text=")" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="B(" />
 
         <EditText
-            android:id="@+id/gsr_t2"
+            android:id="@+id/ls_b"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -65,6 +73,14 @@
             android:textSize="28sp"
             android:fontFamily="@font/milky_vintage"
             android:backgroundTint="@color/dark_brown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text=")" />
 
     </LinearLayout>
 
@@ -79,56 +95,11 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="n = " />
+            android:text="m =" />
 
         <EditText
-            android:id="@+id/gsr_n"
+            android:id="@+id/ls_m"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:maxLines="1"
-            android:textColor="@color/brown"
-            android:textSize="28sp"
-            android:fontFamily="@font/milky_vintage"
-            android:backgroundTint="@color/dark_brown" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text="T(n) = " />
-
-        <EditText
-            android:id="@+id/gsr_tn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:maxLines="1"
-            android:textColor="@color/brown"
-            android:textSize="28sp"
-            android:fontFamily="@font/milky_vintage"
-            android:backgroundTint="@color/dark_brown" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text="S(n) = " />
-
-        <EditText
-            android:id="@+id/gsr_sn"
-            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:inputType="none"
             android:focusable="false"
@@ -137,7 +108,6 @@
             android:textSize="28sp"
             android:fontFamily="@font/milky_vintage"
             android:backgroundTint="@color/dark_brown" />
-
 
     </LinearLayout>
 

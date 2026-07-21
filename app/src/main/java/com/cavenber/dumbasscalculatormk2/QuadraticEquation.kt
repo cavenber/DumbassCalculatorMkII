@@ -14,10 +14,9 @@ class QuadraticEquation : Fragment() {
     lateinit var etA : EditText
     lateinit var etB : EditText
     lateinit var etC : EditText
+    lateinit var etX : EditText
 
     private var selected : EditText? = null // universal selection variable
-
-    lateinit var etX : EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +38,6 @@ class QuadraticEquation : Fragment() {
         etB.showSoftInputOnFocus = false
         etC.showSoftInputOnFocus = false
 
-        // focus change listener
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 selected = v as EditText
@@ -115,6 +113,9 @@ class QuadraticEquation : Fragment() {
         view?.findViewById<Button>(R.id.btnRemainder)
             ?.setOnClickListener { selected?.append("%") }
 
+        view?.findViewById<Button>(R.id.btnComma)
+            ?.setOnClickListener { selected?.append(",") }
+
         view?.findViewById<Button>(R.id.btnExecute)
             ?.setOnClickListener {
                 if (calculate()){
@@ -122,14 +123,14 @@ class QuadraticEquation : Fragment() {
                 }
             }
 
-        view?.findViewById<Button>(R.id.btnReset)
-            ?.setOnClickListener {
+        view?.findViewById<Button>(R.id.btnBackspace)
+            ?.setOnLongClickListener {
                 // input fields
                 etA.setText("")
                 etB.setText("")
                 etC.setText("")
-
                 output.setText("")
+                true
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -140,6 +141,7 @@ class QuadraticEquation : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
+                output.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -184,7 +186,6 @@ class QuadraticEquation : Fragment() {
             "x",
             etX.text.toString()
         )
-
     }
 
 

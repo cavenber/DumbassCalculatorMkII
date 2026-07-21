@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         nv_side = findViewById(R.id.nv_side)
         tv_snv = findViewById(R.id.tv_snv)
-        tv_snv.text = getString(R.string.arithmetic_operation)
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -49,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.program_container,
                 ArithmeticOperation()).commit()
+
+            tv_snv.text = "Arithmetic Operation"
         }
 
         // sidebar item selection logic
@@ -86,6 +87,22 @@ class MainActivity : AppCompatActivity() {
                 R.id.snv_geometric_series -> {
                     supportFragmentManager.beginTransaction().replace(R.id.program_container,
                         GeometricSeries()).commit()
+                }
+                R.id.snv_mid_point -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        MidPoint()).commit()
+                }
+                R.id.snv_line_slope -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        LineSlope()).commit()
+                }
+                R.id.snv_line_equation -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        LineEquation()).commit()
+                }
+                R.id.snv_distance_formula -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        DistanceFormula()).commit()
                 }
             }
             tv_snv.text = item.title

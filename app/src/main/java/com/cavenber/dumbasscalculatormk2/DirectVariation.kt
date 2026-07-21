@@ -112,6 +112,9 @@ class DirectVariation : Fragment() {
         view?.findViewById<Button>(R.id.btnRemainder)
             ?.setOnClickListener { selected?.append("%") }
 
+        view?.findViewById<Button>(R.id.btnComma)
+            ?.setOnClickListener { selected?.append(",") }
+
         view?.findViewById<Button>(R.id.btnExecute)
             ?.setOnClickListener {
                 if (calculate()){
@@ -119,12 +122,13 @@ class DirectVariation : Fragment() {
                 }
             }
 
-        view?.findViewById<Button>(R.id.btnReset)
-            ?.setOnClickListener {
+        view?.findViewById<Button>(R.id.btnBackspace)
+            ?.setOnLongClickListener {
                 // input fields
                 etX.setText("")
                 etK.setText("")
                 etY.setText("")
+                true
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -135,6 +139,7 @@ class DirectVariation : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
+                etEmpty.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)

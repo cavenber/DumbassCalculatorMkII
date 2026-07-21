@@ -172,17 +172,17 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/btnComma"
+        android:id="@+id/btnRound"
         style="@style/Button.smol"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_columnWeight="1"
         android:layout_rowWeight="1"
-        android:maxLines="1"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMinTextSize="12sp"
+        android:layout_columnWeight="1"
         android:autoSizeMaxTextSize="20sp"
-        android:text="," />
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:text="round(" />
 
     <Button
         android:id="@+id/btnTan"

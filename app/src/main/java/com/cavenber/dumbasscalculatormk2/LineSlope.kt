@@ -8,15 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 
-class ArithmeticSeries : Fragment() {
+class LineSlope : Fragment() {
 
-    lateinit var etT1: EditText
-    lateinit var etT2: EditText
-    lateinit var etN: EditText
-    lateinit var etTn: EditText
-    lateinit var etSn: EditText
+    lateinit var etA: EditText
+    lateinit var etB: EditText
+    lateinit var etM: EditText
 
-    lateinit var etEmpty: EditText
     private var selected : EditText? = null // universal selection variable
 
     override fun onCreateView(
@@ -24,22 +21,18 @@ class ArithmeticSeries : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_arithmetic_series, container, false)
+        return inflater.inflate(R.layout.fragment_line_slope, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etT1 = view.findViewById<EditText>(R.id.asr_t1)
-        etT2 = view.findViewById<EditText>(R.id.asr_t2)
-        etN = view.findViewById<EditText>(R.id.asr_n)
-        etTn = view.findViewById<EditText>(R.id.asr_tn)
-        etSn = view.findViewById<EditText>(R.id.asr_sn)
+        etA = view.findViewById<EditText>(R.id.ls_a)
+        etB = view.findViewById<EditText>(R.id.ls_b)
+        etM = view.findViewById<EditText>(R.id.ls_m)
 
-        etT1.showSoftInputOnFocus = false
-        etT2.showSoftInputOnFocus = false
-        etN.showSoftInputOnFocus = false
-        etTn.showSoftInputOnFocus = false
+        etA.showSoftInputOnFocus = false
+        etB.showSoftInputOnFocus = false
 
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -47,15 +40,13 @@ class ArithmeticSeries : Fragment() {
             }
         }
 
-        etT1.onFocusChangeListener = listener
-        etT2.onFocusChangeListener = listener
-        etN.onFocusChangeListener = listener
-        etTn.onFocusChangeListener = listener
+        etA.onFocusChangeListener = listener
+        etB.onFocusChangeListener = listener
 
-        inputBase()
+        inputBase(etM)
     }
 
-    fun inputBase() {
+    fun inputBase(output: EditText) {
 
         view?.findViewById<Button>(R.id.btn0)
             ?.setOnClickListener { selected?.append("0") }
@@ -130,11 +121,9 @@ class ArithmeticSeries : Fragment() {
         view?.findViewById<Button>(R.id.btnBackspace)
             ?.setOnLongClickListener {
                 // input fields
-                etT1.setText("")
-                etT2.setText("")
-                etN.setText("")
-                etTn.setText("")
-                etSn.setText("")
+                etA.setText("")
+                etB.setText("")
+                output.setText("")
                 true
             }
 
@@ -146,7 +135,7 @@ class ArithmeticSeries : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
-                etEmpty.setText("")
+                output.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -154,59 +143,30 @@ class ArithmeticSeries : Fragment() {
     }
 
     fun calculate() : Boolean {
-        try { // write calculations here
-            if (etTn.text.toString().isEmpty()) {
-                val t1 = Num.evalToNum(etT1.text.toString())
-                val t2 = Num.evalToNum(etT2.text.toString())
-                val n = Num.evalToNum(etN.text.toString())
-                etEmpty = etTn
+        try {
+            val a = Num.evalMultiToNum(etA.text.toString())
+            val b = Num.evalMultiToNum(etB.text.toString())
 
-                val a = t1
-                val d = t2 - t1
-                val sn = (n / 2) * (2 * a + (n - 1) * d)
+            val x = (b[1] - a[1]) / (b[0] - a[0])
 
-                etSn.setText(Num.toString(sn))
-
-            } else if (etN.text.toString().isEmpty()) {
-                val t1 = Num.evalToNum(etT1.text.toString())
-                val t2 = Num.evalToNum(etT2.text.toString())
-                val tn = Num.evalToNum(etTn.text.toString())
-                etEmpty = etN
-
-                val a = t1
-                val d = t2 - t1
-                val n = ((tn - a) / d) + 1
-                val Sn = (n / 2) * (2 * a + (n - 1) * d)
-
-                etSn.setText(Num.toString(Sn))
-
-            } else {
-                throw RuntimeException("go to catch block")
-            }
+            etM.setText(Num.toString(x))
 
             return true
-
+        } catch (e: ArithmeticException) {
+            etM.setText("undefined")
+            return true
         } catch (e: RuntimeException) {
-            etSn.setText(R.string.displeased_message)
+            etM.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        if (etEmpty == etTn) {
-            DBHelper(requireContext()).saveAnswer(
-                "Arithmetic Series",
-                String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
-                "S(n)",
-                etSn.text.toString()
-            )
-        } else if (etEmpty == etN) {
-            DBHelper(requireContext()).saveAnswer(
-                "Arithmetic Series",
-                String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
-                "S(n)",
-                etSn.text.toString()
-            )
-        }
+        DBHelper(requireContext()).saveAnswer(
+            "Line Slope",
+            String.format("A(%s) | B(%s)", etA.text.toString(), etB.text.toString()),
+            "m",
+            etM.text.toString()
+        )
     }
 }

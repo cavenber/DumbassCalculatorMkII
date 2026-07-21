@@ -95,6 +95,9 @@ class ArithmeticOperation : Fragment() {
         view?.findViewById<Button>(R.id.btnRemainder)
             ?.setOnClickListener { input.append("%") }
 
+        view?.findViewById<Button>(R.id.btnComma)
+            ?.setOnClickListener { input.append(",") }
+
         view?.findViewById<Button>(R.id.btnExecute)
             ?.setOnClickListener {
                 if (calculate()) {
@@ -102,10 +105,11 @@ class ArithmeticOperation : Fragment() {
                 }
             }
 
-        view?.findViewById<Button>(R.id.btnReset)
-            ?.setOnClickListener {
+        view?.findViewById<Button>(R.id.btnBackspace)
+            ?.setOnLongClickListener {
                 input.setText("")
                 output.setText("")
+                true
             }
 
         view?.findViewById<Button>(R.id.btnBackspace)
@@ -114,6 +118,7 @@ class ArithmeticOperation : Fragment() {
                 if (length > 0) {
                     input.setText(input.text?.delete(length - 1, length))
                 }
+                output.setText("")
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -164,8 +169,8 @@ class ArithmeticOperation : Fragment() {
         view?.findViewById<Button>(R.id.btnPi)
             ?.setOnClickListener { input.append("PI") }
 
-        view?.findViewById<Button>(R.id.btnComma)
-            ?.setOnClickListener { input.append(",") }
+        view?.findViewById<Button>(R.id.btnRound)
+            ?.setOnClickListener { input.append("round(") }
     }
 
     fun calculate() : Boolean {

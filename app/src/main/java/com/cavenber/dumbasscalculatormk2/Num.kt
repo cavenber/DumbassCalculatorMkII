@@ -19,5 +19,17 @@ class Num {
 
             return Keval.eval(str)
         }
+
+        fun evalMultiToNum(str: String) : List<Double> {
+            val parts = str.split(Regex(",(?=(?:[^()]*\\([^()]*\\))*[^()]*$)"))
+
+            var nums = mutableListOf<Double>()
+
+            for (i in parts.indices) {
+                nums.add(evalToNum(parts[i]))
+            }
+
+            return nums
+        }
     }
 }

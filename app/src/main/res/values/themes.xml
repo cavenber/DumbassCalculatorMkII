@@ -20,7 +20,7 @@
     <style name="Theme.DumbassCalculatorMk2" parent="Base.Theme.DumbassCalculatorMk2" />
 
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/milky_vintage</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="actionOverflowButtonStyle">@style/ThreeDotsThingy</item>

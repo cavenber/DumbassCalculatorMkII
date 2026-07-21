@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">Dumbass Calculator Mk2</string>
-    <string name="title">Dumbass Calculator Mk 2</string>
+    <string name="app_name">Dumbass Calculator Mark II</string>
+    <string name="title">Dumbass Calculator</string>
     <string name="please_select_a_program">Please select a program:</string>
-    <string name="arithmetic_operation">Arithmetic Operation</string>
-    <string name="quadratic_equation">Quadratic Equation</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="displeased_message">error due to idiotic actions</string>

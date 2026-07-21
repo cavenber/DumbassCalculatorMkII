@@ -10,17 +10,6 @@
     <!-- Row 1 -->
 
     <Button
-        android:id="@+id/btnReset"
-        style="@style/Button"
-        android:maxLines="1"
-        android:autoSizeTextType="uniform"
-        android:text="AC"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"/>
-
-    <Button
         android:id="@+id/btnBackspace"
         style="@style/Button"
         android:text="&lt;"
@@ -30,9 +19,17 @@
         android:layout_rowWeight="1"/>
 
     <Button
+        android:id="@+id/btnComma"
+        style="@style/Button"
+        android:text=","
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+    <Button
         android:id="@+id/btnFactorial"
         style="@style/Button"
-
         android:text="!"
         android:layout_width="0dp"
         android:layout_height="0dp"
