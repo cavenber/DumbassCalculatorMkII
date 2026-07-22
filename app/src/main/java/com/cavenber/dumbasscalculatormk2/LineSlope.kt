@@ -14,7 +14,7 @@ class LineSlope : Fragment() {
     lateinit var etB: EditText
     lateinit var etM: EditText
 
-    private var selected : EditText? = null // universal selection variable
+    private var selected: EditText? = null // universal selection variable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

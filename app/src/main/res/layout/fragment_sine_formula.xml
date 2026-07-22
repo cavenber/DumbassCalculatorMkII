@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".LineSlope">
+    tools:context=".SineFormula">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,66 +21,24 @@
         android:textSize="28sp"
         android:textColor="@color/dark_brown"
         android:fontFamily="@font/milky_vintage"
-        android:text="m = y / x"/>
+        android:text="sin A   sin B   sin C\n---- = ---- = ----\na          b           c"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
-        <TextView
+        <ToggleButton
+            android:id="@+id/sf_tg_degree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
+            style="@style/Button.smol"
+            android:paddingVertical="10dp"
+            android:background="@color/brown"
+            android:textColor="@color/light_beige"
             android:fontFamily="@font/milky_vintage"
-            android:text="A(" />
-
-        <EditText
-            android:id="@+id/ls_a"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:maxLines="1"
-            android:textColor="@color/brown"
-            android:textSize="28sp"
-            android:fontFamily="@font/milky_vintage"
-            android:backgroundTint="@color/dark_brown" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text=")" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text="B(" />
-
-        <EditText
-            android:id="@+id/ls_b"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:maxLines="1"
-            android:textColor="@color/brown"
-            android:textSize="28sp"
-            android:fontFamily="@font/milky_vintage"
-            android:backgroundTint="@color/dark_brown" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text=")" />
+            android:textOn="Degree"
+            android:textOff="Radian"/>
 
     </LinearLayout>
 
@@ -95,14 +53,77 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="m = " />
+            android:text="A = " />
 
         <EditText
-            android:id="@+id/ls_m"
-            android:layout_width="180dp"
+            android:id="@+id/sf_A"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:focusable="false"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="a = " />
+
+        <EditText
+            android:id="@+id/sf_a"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="B = " />
+
+        <EditText
+            android:id="@+id/sf_B"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textColor="@color/brown"
+            android:textSize="28sp"
+            android:fontFamily="@font/milky_vintage"
+            android:backgroundTint="@color/dark_brown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/dark_brown"
+            android:fontFamily="@font/milky_vintage"
+            android:text="b = " />
+
+        <EditText
+            android:id="@+id/sf_b"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
             android:maxLines="1"
             android:textColor="@color/brown"
             android:textSize="28sp"

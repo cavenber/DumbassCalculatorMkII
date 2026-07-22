@@ -7,33 +7,44 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import kotlin.math.pow
+import android.widget.ToggleButton
+import kotlin.math.asin
+import kotlin.math.sin
 
-class DistanceFormula : Fragment() {
+class SineFormula : Fragment() {
 
     lateinit var etA: EditText
+    lateinit var eta: EditText
     lateinit var etB: EditText
-    lateinit var etD: EditText
+    lateinit var etb: EditText
 
-    private var selected: EditText? = null // universal selection variable
+    lateinit var tgDegree: ToggleButton
+
+    private var etEmpty: EditText? = null
+    private var selected : EditText? = null // universal selection variable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_distance_formula, container, false)
+        return inflater.inflate(R.layout.fragment_sine_formula, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etA = view.findViewById<EditText>(R.id.df_a)
-        etB = view.findViewById<EditText>(R.id.df_b)
-        etD = view.findViewById<EditText>(R.id.df_d)
+        etA = view.findViewById<EditText>(R.id.sf_A)
+        eta = view.findViewById<EditText>(R.id.sf_a)
+        etB = view.findViewById<EditText>(R.id.sf_B)
+        etb = view.findViewById<EditText>(R.id.sf_b)
+
+        tgDegree = view.findViewById<ToggleButton>(R.id.sf_tg_degree)
 
         etA.showSoftInputOnFocus = false
+        eta.showSoftInputOnFocus = false
         etB.showSoftInputOnFocus = false
+        etb.showSoftInputOnFocus = false
 
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -42,12 +53,14 @@ class DistanceFormula : Fragment() {
         }
 
         etA.onFocusChangeListener = listener
+        eta.onFocusChangeListener = listener
         etB.onFocusChangeListener = listener
+        etb.onFocusChangeListener = listener
 
-        inputBase(etD)
+        inputBase()
     }
 
-    fun inputBase(output: EditText) {
+    fun inputBase() {
 
         view?.findViewById<Button>(R.id.btn0)
             ?.setOnClickListener { selected?.append("0") }
@@ -123,8 +136,9 @@ class DistanceFormula : Fragment() {
             ?.setOnLongClickListener {
                 // input fields
                 etA.setText("")
+                eta.setText("")
                 etB.setText("")
-                output.setText("")
+                etb.setText("")
                 true
             }
 
@@ -136,7 +150,8 @@ class DistanceFormula : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
-                output.setText("")
+                etEmpty?.setText("")
+                etEmpty = null
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -145,27 +160,67 @@ class DistanceFormula : Fragment() {
 
     fun calculate() : Boolean {
         try {
-            val a = Num.evalMultiToNum(etA.text.toString())
-            val b = Num.evalMultiToNum(etB.text.toString())
+            if (etb.text.toString().isEmpty()) {
+                var A = Num.evalToNum(etA.text.toString())
+                val a = Num.evalToNum(eta.text.toString())
+                var B = Num.evalToNum(etB.text.toString())
+                etEmpty = etb
 
-            val d = ((b[0] - a[0]).pow(2.0) + (b[1] - a[1]).pow(2.0)).pow(0.5)
+                if (tgDegree.isChecked) {
+                    A = Math.toRadians(A)
+                    B = Math.toRadians(B)
+                }
 
-            etD.setText(Num.toString(d))
+                val b = (a * sin(B)) / sin(A)
+
+                etb.setText(Num.toString(b))
+
+            } else if (etB.text.toString().isEmpty()) {
+                var A = Num.evalToNum(etA.text.toString())
+                val a = Num.evalToNum(eta.text.toString())
+                val b = Num.evalToNum(etb.text.toString())
+                etEmpty = etB
+
+                if (tgDegree.isChecked) {
+                    A = Math.toRadians(A)
+                }
+
+                var B = asin((sin(A) * b) / a)
+
+                if (tgDegree.isChecked) {
+                    B = Math.toDegrees(B)
+                }
+
+                etB.setText(Num.toString(B))
+
+            } else {
+                throw RuntimeException("to go to catch block")
+            }
 
             return true
 
         } catch (e: RuntimeException) {
-            etD.setText(R.string.displeased_message)
+            etb.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        DBHelper(requireContext()).saveAnswer(
-            "Distance Formula",
-            String.format("A(%s) | B(%s)", etA.text.toString(), etB.text.toString()),
-            "d",
-            etD.text.toString()
-        )
+        if (etEmpty == etb) {
+            DBHelper(requireContext()).saveAnswer(
+                "Sine Formula",
+                String.format("A = %s | a = %s | B = %s", etA.text.toString(), eta.text.toString(), etB.text.toString()),
+                "b",
+                etb.text.toString()
+            )
+        } else if (etEmpty == etB) {
+            DBHelper(requireContext()).saveAnswer(
+                "Sine Formula",
+                String.format("A = %s | a = %s | b = %s", etA.text.toString(), eta.text.toString(), etb.text.toString()),
+                "B",
+                etB.text.toString()
+            )
+        }
+
     }
 }

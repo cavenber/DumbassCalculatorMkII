@@ -13,15 +13,27 @@ class Num {
         }
 
         fun evalToNum(str: String) : Double {
-            if (str == "2+2") { // easter egg for the radiohead song 2+2=5
+            var string = str
+
+            if (string == "2+2") { // easter egg for the radiohead song 2+2=5
                 return 5.0
             }
 
-            return Keval.eval(str)
+            var openBracketCount = string.count{ it == '(' }
+            var closeBracketCount = string.count { it == ')' }
+
+            while (closeBracketCount < openBracketCount) {
+                string += ")"
+
+                openBracketCount = string.count{ it == '(' }
+                closeBracketCount = string.count { it == ')' }
+            }
+
+            return Keval.eval(string)
         }
 
-        fun evalMultiToNum(str: String) : List<Double> {
-            val parts = str.split(Regex(",(?=(?:[^()]*\\([^()]*\\))*[^()]*$)"))
+        fun evalMultiToNum(string: String) : List<Double> {
+            val parts = string.split(Regex(",(?=(?:[^()]*\\([^()]*\\))*[^()]*$)"))
 
             var nums = mutableListOf<Double>()
 

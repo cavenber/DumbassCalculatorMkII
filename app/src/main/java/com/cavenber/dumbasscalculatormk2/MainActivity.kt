@@ -104,6 +104,18 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.program_container,
                         DistanceFormula()).commit()
                 }
+                R.id.snv_pythagorean_theorem -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        PythagoreanTheorem()).commit()
+                }
+                R.id.snv_sine_formula -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        SineFormula()).commit()
+                }
+                R.id.snv_cosine_formula -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        CosineFormula()).commit()
+                }
             }
             tv_snv.text = item.title
             drawerLayout.closeDrawers()

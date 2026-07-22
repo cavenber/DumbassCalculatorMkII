@@ -182,7 +182,7 @@
         android:autoSizeMinTextSize="12sp"
         android:autoSizeTextType="uniform"
         android:maxLines="1"
-        android:text="round(" />
+        android:text="rnd(" />
 
     <Button
         android:id="@+id/btnTan"

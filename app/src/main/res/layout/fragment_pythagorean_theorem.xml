@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".LineSlope">
+    tools:context=".PythagoreanTheorem">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,7 +21,17 @@
         android:textSize="28sp"
         android:textColor="@color/dark_brown"
         android:fontFamily="@font/milky_vintage"
-        android:text="m = y / x"/>
+        android:text="c² = a² + b²"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="@color/dark_brown"
+        android:fontFamily="@font/milky_vintage"
+        android:text="&quot;Stay in school kids. It makes you better at pvp.&quot;\n - Technoblade"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,10 +44,10 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="A(" />
+            android:text="a = " />
 
         <EditText
-            android:id="@+id/ls_a"
+            android:id="@+id/pt_a"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -53,18 +63,10 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text=")" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text="B(" />
+            android:text="b = " />
 
         <EditText
-            android:id="@+id/ls_b"
+            android:id="@+id/pt_b"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -80,29 +82,13 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text=")" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textColor="@color/dark_brown"
-            android:fontFamily="@font/milky_vintage"
-            android:text="m = " />
+            android:text="c = " />
 
         <EditText
-            android:id="@+id/ls_m"
-            android:layout_width="180dp"
+            android:id="@+id/pt_c"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:focusable="false"
             android:maxLines="1"
             android:textColor="@color/brown"
             android:textSize="28sp"

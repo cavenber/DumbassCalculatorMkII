@@ -15,8 +15,9 @@ class GeometricSequence : Fragment() {
     lateinit var etN: EditText
     lateinit var etTn: EditText
 
-    lateinit var etEmpty: EditText
-    private var selected : EditText? = null // universal selection variable
+    private var etEmpty: EditText? = null
+    private var selected: EditText? = null // universal selection variable
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -142,7 +143,8 @@ class GeometricSequence : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
-                etEmpty.setText("")
+                etEmpty?.setText("")
+                etEmpty = null
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -193,14 +195,14 @@ class GeometricSequence : Fragment() {
                 "Geometric Sequence",
                 String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
                 "T(n)",
-                etEmpty.text.toString()
+                etTn.text.toString()
             )
         } else if (etEmpty == etN) {
             DBHelper(requireContext()).saveAnswer(
                 "Geometric Sequence",
                 String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
                 "n",
-                etEmpty.text.toString()
+                etN.text.toString()
             )
         }
     }

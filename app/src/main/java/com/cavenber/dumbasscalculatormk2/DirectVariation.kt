@@ -14,16 +14,16 @@ class DirectVariation : Fragment() {
     lateinit var etK: EditText
     lateinit var etY: EditText
 
-    lateinit var etEmpty: EditText
+    private var etEmpty: EditText? = null
 
-    private var selected : EditText? = null // universal selection variable
+    private var selected: EditText? = null // universal selection variable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_variation_direct, container, false)
+        return inflater.inflate(R.layout.fragment_direct_variation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -139,7 +139,8 @@ class DirectVariation : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
-                etEmpty.setText("")
+                etEmpty?.setText("")
+                etEmpty = null
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -193,21 +194,21 @@ class DirectVariation : Fragment() {
                 "Direct Variation",
                 String.format("x = %s | y = %s", etY.text.toString(), etX.text.toString()),
                 "k",
-                etEmpty.text.toString()
+                etK.text.toString()
             )
         } else if (etEmpty == etY) {
             DBHelper(requireContext()).saveAnswer(
                 "Direct Variation",
                 String.format("x = %s | k = %s", etK.text.toString(), etX.text.toString()),
                 "y",
-                etEmpty.text.toString()
+                etY.text.toString()
             )
         } else if (etEmpty == etX) {
             DBHelper(requireContext()).saveAnswer(
                 "Direct Variation",
                 String.format("k = %s | y = %s", etY.text.toString(), etK.text.toString()),
                 "x",
-                etEmpty.text.toString()
+                etX.text.toString()
             )
         }
     }

@@ -69,5 +69,22 @@
         </menu>
     </item>
 
+    <item
+        android:title="Triangular Calculations">
+        <menu>
+            <item
+                android:id="@+id/snv_pythagorean_theorem"
+                android:title="Pythagorean Theorem" />
+
+            <item
+                android:id="@+id/snv_sine_formula"
+                android:title="Sine Formula" />
+
+            <item
+                android:id="@+id/snv_cosine_formula"
+                android:title="Cosine Formula" />
+        </menu>
+    </item>
+
 
 </menu>

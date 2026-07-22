@@ -9,12 +9,13 @@ import android.widget.Button
 import android.widget.EditText
 import kotlin.math.pow
 
-class DistanceFormula : Fragment() {
+class PythagoreanTheorem : Fragment() {
 
     lateinit var etA: EditText
     lateinit var etB: EditText
-    lateinit var etD: EditText
+    lateinit var etC: EditText
 
+    private var etEmpty: EditText? = null
     private var selected: EditText? = null // universal selection variable
 
     override fun onCreateView(
@@ -22,18 +23,19 @@ class DistanceFormula : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_distance_formula, container, false)
+        return inflater.inflate(R.layout.fragment_pythagorean_theorem, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etA = view.findViewById<EditText>(R.id.df_a)
-        etB = view.findViewById<EditText>(R.id.df_b)
-        etD = view.findViewById<EditText>(R.id.df_d)
+        etA = view.findViewById<EditText>(R.id.pt_a)
+        etB = view.findViewById<EditText>(R.id.pt_b)
+        etC = view.findViewById<EditText>(R.id.pt_c)
 
         etA.showSoftInputOnFocus = false
         etB.showSoftInputOnFocus = false
+        etC.showSoftInputOnFocus = false
 
         val listener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -43,11 +45,12 @@ class DistanceFormula : Fragment() {
 
         etA.onFocusChangeListener = listener
         etB.onFocusChangeListener = listener
+        etC.onFocusChangeListener = listener
 
-        inputBase(etD)
+        inputBase()
     }
 
-    fun inputBase(output: EditText) {
+    fun inputBase() {
 
         view?.findViewById<Button>(R.id.btn0)
             ?.setOnClickListener { selected?.append("0") }
@@ -124,7 +127,7 @@ class DistanceFormula : Fragment() {
                 // input fields
                 etA.setText("")
                 etB.setText("")
-                output.setText("")
+                etC.setText("")
                 true
             }
 
@@ -136,7 +139,8 @@ class DistanceFormula : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
-                output.setText("")
+                etEmpty?.setText("")
+                etEmpty = null
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)
@@ -145,27 +149,67 @@ class DistanceFormula : Fragment() {
 
     fun calculate() : Boolean {
         try {
-            val a = Num.evalMultiToNum(etA.text.toString())
-            val b = Num.evalMultiToNum(etB.text.toString())
+            if (etC.text.toString().isEmpty()) {
+                val a = Num.evalToNum(etA.text.toString())
+                val b = Num.evalToNum(etB.text.toString())
+                etEmpty = etC
 
-            val d = ((b[0] - a[0]).pow(2.0) + (b[1] - a[1]).pow(2.0)).pow(0.5)
+                val c = (a.pow(2) + b.pow(2)).pow(0.5)
 
-            etD.setText(Num.toString(d))
+                etC.setText(Num.toString(c))
+
+            } else if (etB.text.toString().isEmpty()) {
+                val a = Num.evalToNum(etA.text.toString())
+                val c = Num.evalToNum(etC.text.toString())
+                etEmpty = etB
+
+                val b = (c.pow(2) - a.pow(2)).pow(0.5)
+
+                etB.setText(Num.toString(b))
+
+            } else if (etA.text.toString().isEmpty()) {
+                val b = Num.evalToNum(etB.text.toString())
+                val c = Num.evalToNum(etC.text.toString())
+                etEmpty = etA
+
+                val a = (c.pow(2) - b.pow(2)).pow(0.5)
+
+                etA.setText(Num.toString(a))
+
+            } else {
+                throw RuntimeException("to go to catch block")
+            }
 
             return true
 
         } catch (e: RuntimeException) {
-            etD.setText(R.string.displeased_message)
+            etC.setText(R.string.displeased_message)
             return false
         }
     }
 
     fun answerLog() {
-        DBHelper(requireContext()).saveAnswer(
-            "Distance Formula",
-            String.format("A(%s) | B(%s)", etA.text.toString(), etB.text.toString()),
-            "d",
-            etD.text.toString()
-        )
+        if (etEmpty == etC) {
+            DBHelper(requireContext()).saveAnswer(
+                "Pythagorean Theorem",
+                String.format("a = %s | b = %s", etA.text.toString(), etB.text.toString()),
+                "c",
+                etC.text.toString()
+            )
+        } else if (etEmpty == etB) {
+            DBHelper(requireContext()).saveAnswer(
+                "Pythagorean Theorem",
+                String.format("a = %s | c = %s", etA.text.toString(), etC.text.toString()),
+                "b",
+                etB.text.toString()
+            )
+        } else if (etEmpty == etA) {
+            DBHelper(requireContext()).saveAnswer(
+                "Pythagorean Theorem",
+                String.format("b = %s | c = %s", etB.text.toString(), etC.text.toString()),
+                "a",
+                etA.text.toString()
+            )
+        }
     }
 }

@@ -16,8 +16,8 @@ class ArithmeticSeries : Fragment() {
     lateinit var etTn: EditText
     lateinit var etSn: EditText
 
-    lateinit var etEmpty: EditText
-    private var selected : EditText? = null // universal selection variable
+    private var etEmpty: EditText? = null
+    private var selected: EditText? = null // universal selection variable
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -146,7 +146,8 @@ class ArithmeticSeries : Fragment() {
                         it.text.delete(length - 1, length)
                     }
                 }
-                etEmpty.setText("")
+                etEmpty?.setText("")
+                etEmpty = null
             }
 
         view?.findViewById<Button>(R.id.btnAnswer)

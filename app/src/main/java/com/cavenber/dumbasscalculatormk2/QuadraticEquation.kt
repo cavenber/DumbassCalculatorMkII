@@ -11,12 +11,12 @@ import kotlin.math.pow
 
 class QuadraticEquation : Fragment() {
 
-    lateinit var etA : EditText
-    lateinit var etB : EditText
-    lateinit var etC : EditText
-    lateinit var etX : EditText
+    lateinit var etA: EditText
+    lateinit var etB: EditText
+    lateinit var etC: EditText
+    lateinit var etX: EditText
 
-    private var selected : EditText? = null // universal selection variable
+    private var selected: EditText? = null // universal selection variable
 
     override fun onCreateView(
         inflater: LayoutInflater,
