@@ -134,9 +134,16 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.om_display_answer -> {
                 supportFragmentManager.beginTransaction().replace(R.id.program_container, AnswerLog()).commit()
+                tv_snv.text = item.title
+            }
+            R.id.om_copy_answer -> {
+                CopyAnswer.mostRecent(applicationContext)
+            }
+            R.id.om_manual -> {
+                supportFragmentManager.beginTransaction().replace(R.id.program_container, Manual()).commit()
+                tv_snv.text = item.title
             }
         }
-        tv_snv.text = item.title
         return true
     }
 }
