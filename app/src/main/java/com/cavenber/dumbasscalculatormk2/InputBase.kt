@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 
-class InputBase(val view: View, val context: Context, val clearET: () -> Unit, val calculation: () -> Unit, val answerHelper: () -> Unit) {
+class InputBase(val view: View, val context: Context, val clearET: () -> Unit, val execution: () -> Unit, val answerHelper: () -> Unit) {
 
     var selected: EditText? = null
     var etEmpty: EditText? = null
@@ -76,7 +76,7 @@ class InputBase(val view: View, val context: Context, val clearET: () -> Unit, v
 
         view.findViewById<Button>(R.id.btnExecute)
             ?.setOnClickListener {
-                if (calculate()){
+                if (execute()){
                     answerLog()
                 }
             }
@@ -102,10 +102,12 @@ class InputBase(val view: View, val context: Context, val clearET: () -> Unit, v
             ?.setOnClickListener { selected?.append(DBHelper(context).getMostRecentAnswer()) }
     }
 
-    fun calculate() : Boolean {
+    fun execute() : Boolean {
         try {
-            calculation()
+            execution()
             return true
+        } catch (e: DataIncompleteException) {
+            return false
         } catch (e: RuntimeException) {
             etEmpty?.setText(R.string.displeased_message)
             return false

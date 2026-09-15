@@ -116,6 +116,10 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.program_container,
                         CosineFormula()).commit()
                 }
+                R.id.snv_expected_value -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.program_container,
+                        ExpectedValue()).commit()
+                }
             }
             tv_snv.text = item.title
             drawerLayout.closeDrawers()

@@ -231,7 +231,8 @@
     <Button
         android:id="@+id/btnExecute"
         style="@style/Button"
-        android:text="="
+        android:text="Exe"
+        android:textSize="18sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnWeight="1"

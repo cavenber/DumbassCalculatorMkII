@@ -86,5 +86,13 @@
         </menu>
     </item>
 
+    <item
+        android:title="Probability Calculations">
+        <menu>
+            <item
+                android:id="@+id/snv_expected_value"
+                android:title="Expected Value" />
+        </menu>
+    </item>
 
 </menu>
