@@ -1,4 +1,4 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.dependencies
 
 import android.content.ContentValues
 import android.content.Context
@@ -13,18 +13,19 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
 ) {
     companion object {
         private const val DATABASE_NAME = "dumbass_calculator.db"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
 
-        const val TABLE_ANSWER_LOG = "AnswerLog"
+        const val OLD_TABLE = "AnswerLog"
+        const val TABLE_CALCULATION_LOG = "CalculationLog"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(
             """
-                CREATE TABLE $TABLE_ANSWER_LOG (
+                CREATE TABLE $TABLE_CALCULATION_LOG (
                     _id         INTEGER PRIMARY KEY AUTOINCREMENT,
                     program     TEXT    NOT NULL,
-                    equation    TEXT    NOT NULL,
+                    variables    TEXT    NOT NULL,
                     answerVar   TEXT    NOT NULL,
                     answer      TEXT    NOT NULL
                 )
@@ -33,13 +34,14 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.execSQL("DROP TABLE IF EXISTS $TABLE_ANSWER_LOG")
+        db?.execSQL("DROP TABLE IF EXISTS $OLD_TABLE")
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_CALCULATION_LOG")
         onCreate(db)
     }
 
     fun saveAnswer(
         program: String,
-        equation: String,
+        variables: String,
         answerVar: String,
         answer: String
     ) {
@@ -49,12 +51,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         try {
             val logValues = ContentValues().apply {
                 put("program", program)
-                put("equation", equation)
+                put("variables", variables)
                 put("answerVar", answerVar)
                 put("answer", answer)
             }
 
-            db.insert(TABLE_ANSWER_LOG, null, logValues)
+            db.insert(TABLE_CALCULATION_LOG, null, logValues)
             db.setTransactionSuccessful()
 
         } finally {
@@ -67,7 +69,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
 
         db.beginTransaction()
         try {
-            db.delete(TABLE_ANSWER_LOG, null, null)
+            db.delete(TABLE_CALCULATION_LOG, null, null)
             db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
@@ -78,7 +80,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         val db = readableDatabase
 
         db.query(
-            TABLE_ANSWER_LOG,
+            TABLE_CALCULATION_LOG,
             null,
             null,
             null,
@@ -92,12 +94,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         }
     }
 
-    fun getAllAnswerLogs() : List<AnswerLogEntry> {
-        val list = mutableListOf<AnswerLogEntry>()
+    fun getAllCalculationLogs() : List<CalculationLogEntry> {
+        val list = mutableListOf<CalculationLogEntry>()
         val db = readableDatabase
 
         db.query(
-            TABLE_ANSWER_LOG,
+            TABLE_CALCULATION_LOG,
             null,
             null,
             null,
@@ -107,10 +109,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         ).use { cursor ->
             while (cursor.moveToNext()) {
                 list.add(
-                    AnswerLogEntry(
+                    CalculationLogEntry(
                         id = cursor.getLong(cursor.getColumnIndexOrThrow("_id")),
                         program = cursor.getString(cursor.getColumnIndexOrThrow("program")),
-                        equation = cursor.getString(cursor.getColumnIndexOrThrow("equation")),
+                        variables = cursor.getString(cursor.getColumnIndexOrThrow("variables")),
                         answerVar = cursor.getString(cursor.getColumnIndexOrThrow("answerVar")),
                         answer = cursor.getString(cursor.getColumnIndexOrThrow("answer"))
                     )
@@ -119,5 +121,30 @@ class DBHelper(context: Context) : SQLiteOpenHelper(
         }
 
         return list
+    }
+
+    fun getMostRecentCalculationLog() : CalculationLogEntry {
+        val db = readableDatabase
+
+        db.query(
+            TABLE_CALCULATION_LOG,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "_id DESC"
+        ).use { cursor ->
+            if (cursor.moveToFirst())
+                return CalculationLogEntry(
+                    id = cursor.getLong(cursor.getColumnIndexOrThrow("_id")),
+                    program = cursor.getString(cursor.getColumnIndexOrThrow("program")),
+                    variables = cursor.getString(cursor.getColumnIndexOrThrow("variables")),
+                    answerVar = cursor.getString(cursor.getColumnIndexOrThrow("answerVar")),
+                    answer = cursor.getString(cursor.getColumnIndexOrThrow("answer"))
+                )
+            else
+                return CalculationLogEntry(-1, "", "", "", "")
+        }
     }
 }

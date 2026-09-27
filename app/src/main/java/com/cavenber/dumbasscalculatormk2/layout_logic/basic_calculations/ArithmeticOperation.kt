@@ -1,11 +1,16 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.basic_calculations
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.EditText
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.InputSpecial
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 
 class ArithmeticOperation : Fragment() {
 
@@ -29,7 +34,8 @@ class ArithmeticOperation : Fragment() {
         equation = view.findViewById<EditText>(R.id.equation)
         answer = view.findViewById<EditText>(R.id.answer)
 
-        inputBase = InputBase(view, requireContext(),
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 equation.setText("")
                 answer.setText("")

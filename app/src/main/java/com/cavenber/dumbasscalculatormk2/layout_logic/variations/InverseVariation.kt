@@ -1,18 +1,22 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.variations
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 
 class InverseVariation : Fragment() {
 
     lateinit var etX: EditText
     lateinit var etK: EditText
     lateinit var etY: EditText
-    
+
     lateinit var inputBase: InputBase
 
     override fun onCreateView(
@@ -33,8 +37,9 @@ class InverseVariation : Fragment() {
         etX.showSoftInputOnFocus = false
         etK.showSoftInputOnFocus = false
         etY.showSoftInputOnFocus = false
-        
-        inputBase = InputBase(view, requireContext(),
+
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etX.setText("")
                 etK.setText("")

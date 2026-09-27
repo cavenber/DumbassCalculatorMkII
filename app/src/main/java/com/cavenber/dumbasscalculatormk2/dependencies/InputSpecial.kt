@@ -1,13 +1,14 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.dependencies
 
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.cavenber.dumbasscalculatormk2.R
 
 class InputSpecial(val view: View) {
 
     var selected: EditText? = null
-    
+
     init {
         view.findViewById<Button>(R.id.btnSqrt)
             ?.setOnClickListener { selected?.append("sqrt(") }

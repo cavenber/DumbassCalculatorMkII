@@ -1,12 +1,16 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.triangular_calculations
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ToggleButton
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 import kotlin.math.asin
 import kotlin.math.sin
 
@@ -18,7 +22,7 @@ class SineFormula : Fragment() {
     lateinit var etb: EditText
 
     lateinit var tgDegree: ToggleButton
-    
+
     lateinit var inputBase: InputBase
 
     override fun onCreateView(
@@ -43,8 +47,9 @@ class SineFormula : Fragment() {
         eta.showSoftInputOnFocus = false
         etB.showSoftInputOnFocus = false
         etb.showSoftInputOnFocus = false
-        
-        inputBase = InputBase(view, requireContext(),
+
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etA.setText("")
                 eta.setText("")
@@ -93,14 +98,24 @@ class SineFormula : Fragment() {
                 if (inputBase.etEmpty == etb) {
                     DBHelper(requireContext()).saveAnswer(
                         "Sine Formula",
-                        String.format("A = %s | a = %s | B = %s", etA.text.toString(), eta.text.toString(), etB.text.toString()),
+                        String.format(
+                            "A = %s | a = %s | B = %s",
+                            etA.text.toString(),
+                            eta.text.toString(),
+                            etB.text.toString()
+                        ),
                         "b",
                         etb.text.toString()
                     )
                 } else if (inputBase.etEmpty == etB) {
                     DBHelper(requireContext()).saveAnswer(
                         "Sine Formula",
-                        String.format("A = %s | a = %s | b = %s", etA.text.toString(), eta.text.toString(), etb.text.toString()),
+                        String.format(
+                            "A = %s | a = %s | b = %s",
+                            etA.text.toString(),
+                            eta.text.toString(),
+                            etb.text.toString()
+                        ),
                         "B",
                         etB.text.toString()
                     )

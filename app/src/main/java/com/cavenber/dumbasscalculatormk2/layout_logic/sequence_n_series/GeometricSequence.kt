@@ -1,19 +1,24 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.sequence_n_series
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
+import kotlin.math.log
 
-class ArithmeticSequence : Fragment() {
+class GeometricSequence : Fragment() {
 
     lateinit var etT1: EditText
     lateinit var etT2: EditText
     lateinit var etN: EditText
     lateinit var etTn: EditText
-    
+
     lateinit var inputBase: InputBase
 
     override fun onCreateView(
@@ -21,23 +26,24 @@ class ArithmeticSequence : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_arithmetic_sequence, container, false)
+        return inflater.inflate(R.layout.fragment_geometric_sequence, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etT1 = view.findViewById<EditText>(R.id.asq_t1)
-        etT2 = view.findViewById<EditText>(R.id.asq_t2)
-        etN = view.findViewById<EditText>(R.id.asq_n)
-        etTn = view.findViewById<EditText>(R.id.asq_tn)
+        etT1 = view.findViewById<EditText>(R.id.gsq_t1)
+        etT2 = view.findViewById<EditText>(R.id.gsq_t2)
+        etN = view.findViewById<EditText>(R.id.gsq_n)
+        etTn = view.findViewById<EditText>(R.id.gsq_tn)
 
         etT1.showSoftInputOnFocus = false
         etT2.showSoftInputOnFocus = false
         etN.showSoftInputOnFocus = false
         etTn.showSoftInputOnFocus = false
-        
-        inputBase = InputBase(view, requireContext(),
+
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etT1.setText("")
                 etT2.setText("")
@@ -52,8 +58,8 @@ class ArithmeticSequence : Fragment() {
                     inputBase.etEmpty = etTn
 
                     val a = t1
-                    val d = t2 - t1
-                    val tn = a + (n - 1) * d
+                    val r = t2 / t1
+                    val tn = a * (Math.pow(r, n - 1))
 
                     etTn.setText(Num.toString(tn))
 
@@ -64,8 +70,8 @@ class ArithmeticSequence : Fragment() {
                     inputBase.etEmpty = etN
 
                     val a = t1
-                    val d = t2 - t1
-                    val n = ((tn - a) / d) + 1
+                    val r = t2 / t1
+                    val n = log(tn / a, r) + 1
 
                     etN.setText(Num.toString(n))
 
@@ -76,15 +82,25 @@ class ArithmeticSequence : Fragment() {
             {
                 if (inputBase.etEmpty == etTn) {
                     DBHelper(requireContext()).saveAnswer(
-                        "Arithmetic Sequence",
-                        String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
+                        "Geometric Sequence",
+                        String.format(
+                            "T(1) = %s | T(2) = %s | n = %s",
+                            etT1.text.toString(),
+                            etT2.text.toString(),
+                            etN.text.toString()
+                        ),
                         "T(n)",
                         etTn.text.toString()
                     )
                 } else if (inputBase.etEmpty == etN) {
                     DBHelper(requireContext()).saveAnswer(
-                        "Arithmetic Sequence",
-                        String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
+                        "Geometric Sequence",
+                        String.format(
+                            "T(1) = %s | T(2) = %s | T(n) = %s",
+                            etT1.text.toString(),
+                            etT2.text.toString(),
+                            etTn.text.toString()
+                        ),
                         "n",
                         etN.text.toString()
                     )

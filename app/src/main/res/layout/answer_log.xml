@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".AnswerLog">
+    tools:context=".layout_logic.CalculationLog">
 
     <ListView
         android:id="@+id/lv_list_log"

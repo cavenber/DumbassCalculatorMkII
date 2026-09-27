@@ -1,9 +1,10 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.dependencies
 
 import android.content.Context
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.cavenber.dumbasscalculatormk2.R
 
 class InputBase(val view: View, val context: Context, val clearET: () -> Unit, val execution: () -> Unit, val answerHelper: () -> Unit) {
 

@@ -1,11 +1,15 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.geometry_calculations
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 
 class LineSlope : Fragment() {
 
@@ -33,7 +37,8 @@ class LineSlope : Fragment() {
         etA.showSoftInputOnFocus = false
         etB.showSoftInputOnFocus = false
 
-        inputBase = InputBase(view, requireContext(),
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etA.setText("")
                 etB.setText("")

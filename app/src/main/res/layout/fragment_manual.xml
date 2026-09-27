@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Manual">
+    android:orientation="vertical"
+    android:background="@color/beige"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingTop="60dp"
+    android:paddingHorizontal="10dp"
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".layout_logic.Manual">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tv_empty"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="32dp"
+        android:text="Fucking pussy ever heard of trial and error?"
+        android:textColor="@color/dark_brown"
+        android:textSize="16sp"
+        android:fontFamily="@font/milky_vintage" />
 
-</FrameLayout>
+</LinearLayout>

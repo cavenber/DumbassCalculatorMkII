@@ -1,4 +1,4 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.basic_calculations
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 import kotlin.math.pow
 
 class QuadraticEquation : Fragment() {
@@ -37,7 +41,8 @@ class QuadraticEquation : Fragment() {
         etB.showSoftInputOnFocus = false
         etC.showSoftInputOnFocus = false
 
-        inputBase = InputBase(view, requireContext(),
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etA.setText("")
                 etB.setText("")
@@ -70,7 +75,12 @@ class QuadraticEquation : Fragment() {
             {
                 DBHelper(requireContext()).saveAnswer(
                     "Quadratic Equation",
-                    String.format("a = %s | b = %s | c = %s", etA.text.toString(), etB.text.toString(), etC.text.toString()),
+                    String.format(
+                        "a = %s | b = %s | c = %s",
+                        etA.text.toString(),
+                        etB.text.toString(),
+                        etC.text.toString()
+                    ),
                     "x",
                     etX.text.toString()
                 )

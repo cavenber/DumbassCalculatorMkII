@@ -1,11 +1,16 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.sequence_n_series
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
+import kotlin.math.log
 
 class GeometricSeries : Fragment() {
 
@@ -39,7 +44,8 @@ class GeometricSeries : Fragment() {
         etN.showSoftInputOnFocus = false
         etTn.showSoftInputOnFocus = false
 
-        inputBase = InputBase(view, requireContext(),
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etT1.setText("")
                 etT2.setText("")
@@ -68,7 +74,7 @@ class GeometricSeries : Fragment() {
 
                     val a = t1
                     val r = t2 / t1
-                    val n = kotlin.math.log(tn / a, r) + 1
+                    val n = log(tn / a, r) + 1
                     val Sn = (a * (1 - (Math.pow(r, n)))) / (1 - r)
 
                     etSn.setText(Num.toString(Sn))
@@ -81,14 +87,24 @@ class GeometricSeries : Fragment() {
                 if (inputBase.etEmpty == etTn) {
                     DBHelper(requireContext()).saveAnswer(
                         "Geometric Series",
-                        String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
+                        String.format(
+                            "T(1) = %s | T(2) = %s | n = %s",
+                            etT1.text.toString(),
+                            etT2.text.toString(),
+                            etN.text.toString()
+                        ),
                         "S(n)",
                         etSn.text.toString()
                     )
                 } else if (inputBase.etEmpty == etN) {
                     DBHelper(requireContext()).saveAnswer(
                         "Geometric Series",
-                        String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
+                        String.format(
+                            "T(1) = %s | T(2) = %s | T(n) = %s",
+                            etT1.text.toString(),
+                            etT2.text.toString(),
+                            etTn.text.toString()
+                        ),
                         "S(n)",
                         etSn.text.toString()
                     )
