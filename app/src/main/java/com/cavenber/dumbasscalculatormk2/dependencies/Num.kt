@@ -1,4 +1,4 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.dependencies
 
 import com.notkamui.keval.Keval
 
@@ -33,9 +33,14 @@ class Num {
         }
 
         fun evalMultiToNum(string: String) : List<Double> {
-            val parts = string.split(Regex(",(?=(?:[^()]*\\([^()]*\\))*[^()]*$)"))
+            val cleanString = string.removeSurrounding("[", "]")
+            val parts = cleanString.split(Regex(",(?=(?:[^()]*\\([^()]*\\))*[^()]*$)"))
 
             var nums = mutableListOf<Double>()
+
+            if (string == "Null") {
+                return nums
+            }
 
             for (i in parts.indices) {
                 nums.add(evalToNum(parts[i]))

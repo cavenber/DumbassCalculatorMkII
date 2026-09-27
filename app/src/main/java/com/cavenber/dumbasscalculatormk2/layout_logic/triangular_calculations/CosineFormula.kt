@@ -1,12 +1,16 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.triangular_calculations
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ToggleButton
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 import kotlin.math.acos
 import kotlin.math.cos
 import kotlin.math.pow
@@ -19,7 +23,7 @@ class CosineFormula : Fragment() {
     lateinit var etc: EditText
 
     lateinit var tgDegree: ToggleButton
-    
+
     lateinit var inputBase: InputBase
 
     override fun onCreateView(
@@ -44,8 +48,9 @@ class CosineFormula : Fragment() {
         etb.showSoftInputOnFocus = false
         etC.showSoftInputOnFocus = false
         etc.showSoftInputOnFocus = false
-        
-        inputBase = InputBase(view, requireContext(),
+
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 eta.setText("")
                 etb.setText("")
@@ -89,14 +94,24 @@ class CosineFormula : Fragment() {
                 if (inputBase.etEmpty == etc) {
                     DBHelper(requireContext()).saveAnswer(
                         "Cosine Formula",
-                        String.format("a = %s | b = %s | C = %s", eta.text.toString(), etb.text.toString(), etC.text.toString()),
+                        String.format(
+                            "a = %s | b = %s | C = %s",
+                            eta.text.toString(),
+                            etb.text.toString(),
+                            etC.text.toString()
+                        ),
                         "c",
                         etc.text.toString()
                     )
                 } else if (inputBase.etEmpty == etC) {
                     DBHelper(requireContext()).saveAnswer(
                         "Cosine Formula",
-                        String.format("a = %s | b = %s | c = %s", eta.text.toString(), etb.text.toString(), etc.text.toString()),
+                        String.format(
+                            "a = %s | b = %s | c = %s",
+                            eta.text.toString(),
+                            etb.text.toString(),
+                            etc.text.toString()
+                        ),
                         "C",
                         etC.text.toString()
                     )

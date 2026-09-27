@@ -1,19 +1,21 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.geometry_calculations
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
-import kotlin.math.pow
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 
-class DistanceFormula : Fragment() {
+class MidPoint : Fragment() {
 
     lateinit var etA: EditText
     lateinit var etB: EditText
-    lateinit var etD: EditText
+    lateinit var etM: EditText
 
     lateinit var inputBase: InputBase
 
@@ -22,39 +24,41 @@ class DistanceFormula : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_distance_formula, container, false)
+        return inflater.inflate(R.layout.fragment_mid_point, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etA = view.findViewById<EditText>(R.id.df_a)
-        etB = view.findViewById<EditText>(R.id.df_b)
-        etD = view.findViewById<EditText>(R.id.df_d)
+        etA = view.findViewById<EditText>(R.id.mp_a)
+        etB = view.findViewById<EditText>(R.id.mp_b)
+        etM = view.findViewById<EditText>(R.id.mp_m)
 
         etA.showSoftInputOnFocus = false
         etB.showSoftInputOnFocus = false
 
-        inputBase = InputBase(view, requireContext(),
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etA.setText("")
                 etB.setText("")
-                etD.setText("")
+                etM.setText("")
             },
             {
                 val a = Num.evalMultiToNum(etA.text.toString())
                 val b = Num.evalMultiToNum(etB.text.toString())
 
-                val d = ((b[0] - a[0]).pow(2.0) + (b[1] - a[1]).pow(2.0)).pow(0.5)
+                val mx = (a[0] + b[0]) / 2
+                val my = (a[1] + b[1]) / 2
 
-                etD.setText(Num.toString(d))
+                etM.setText(String.format("%s,%s", Num.toString(mx), Num.toString(my)))
             },
             {
                 DBHelper(requireContext()).saveAnswer(
-                    "Distance Formula",
+                    "Mid-Point",
                     String.format("A(%s) | B(%s)", etA.text.toString(), etB.text.toString()),
-                    "d",
-                    etD.text.toString()
+                    "M(x,y)",
+                    etM.text.toString()
                 )
             }
         )

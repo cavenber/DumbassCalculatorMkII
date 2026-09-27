@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".GeometricSeries">
+    tools:context=".layout_logic.sequence_n_series.GeometricSeries">
 
     <TextView
         android:layout_width="match_parent"

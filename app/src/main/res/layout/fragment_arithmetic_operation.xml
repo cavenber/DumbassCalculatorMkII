@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".ArithmeticOperation">
+    tools:context=".layout_logic.basic_calculations.ArithmeticOperation">
 
     <EditText
         android:id="@+id/equation"

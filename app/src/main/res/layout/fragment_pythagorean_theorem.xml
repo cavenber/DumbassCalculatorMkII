@@ -11,7 +11,7 @@
     android:paddingTop="60dp"
     android:paddingHorizontal="10dp"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".PythagoreanTheorem">
+    tools:context=".layout_logic.triangular_calculations.PythagoreanTheorem">
 
     <TextView
         android:layout_width="match_parent"

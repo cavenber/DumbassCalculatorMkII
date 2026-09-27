@@ -1,11 +1,15 @@
-package com.cavenber.dumbasscalculatormk2
+package com.cavenber.dumbasscalculatormk2.layout_logic.sequence_n_series
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import com.cavenber.dumbasscalculatormk2.R
+import com.cavenber.dumbasscalculatormk2.dependencies.DBHelper
+import com.cavenber.dumbasscalculatormk2.dependencies.InputBase
+import com.cavenber.dumbasscalculatormk2.dependencies.Num
 
 class ArithmeticSeries : Fragment() {
 
@@ -14,7 +18,7 @@ class ArithmeticSeries : Fragment() {
     lateinit var etN: EditText
     lateinit var etTn: EditText
     lateinit var etSn: EditText
-    
+
     lateinit var inputBase: InputBase
 
     override fun onCreateView(
@@ -38,8 +42,9 @@ class ArithmeticSeries : Fragment() {
         etT2.showSoftInputOnFocus = false
         etN.showSoftInputOnFocus = false
         etTn.showSoftInputOnFocus = false
-        
-        inputBase = InputBase(view, requireContext(),
+
+        inputBase = InputBase(
+            view, requireContext(),
             {
                 etT1.setText("")
                 etT2.setText("")
@@ -81,14 +86,24 @@ class ArithmeticSeries : Fragment() {
                 if (inputBase.etEmpty == etTn) {
                     DBHelper(requireContext()).saveAnswer(
                         "Arithmetic Series",
-                        String.format("T(1) = %s | T(2) = %s | n = %s", etT1.text.toString(), etT2.text.toString(), etN.text.toString()),
+                        String.format(
+                            "T(1) = %s | T(2) = %s | n = %s",
+                            etT1.text.toString(),
+                            etT2.text.toString(),
+                            etN.text.toString()
+                        ),
                         "S(n)",
                         etSn.text.toString()
                     )
                 } else if (inputBase.etEmpty == etN) {
                     DBHelper(requireContext()).saveAnswer(
                         "Arithmetic Series",
-                        String.format("T(1) = %s | T(2) = %s | T(n) = %s", etT1.text.toString(), etT2.text.toString(), etTn.text.toString()),
+                        String.format(
+                            "T(1) = %s | T(2) = %s | T(n) = %s",
+                            etT1.text.toString(),
+                            etT2.text.toString(),
+                            etTn.text.toString()
+                        ),
                         "S(n)",
                         etSn.text.toString()
                     )
