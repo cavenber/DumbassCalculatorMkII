@@ -111,7 +111,7 @@
             android:textSize="28sp"
             android:textColor="@color/dark_brown"
             android:fontFamily="@font/milky_vintage"
-            android:text="Expected Value = " />
+            android:text="E(x) = " />
 
         <EditText
             android:id="@+id/ev_ans"

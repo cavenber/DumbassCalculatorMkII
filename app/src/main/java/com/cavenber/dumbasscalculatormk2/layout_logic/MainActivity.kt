@@ -195,15 +195,15 @@ class MainActivity : AppCompatActivity() {
                 ).commit()
                 tv_snv.text = item.title
             }
+            R.id.om_manual -> {
+                supportFragmentManager.beginTransaction().replace(R.id.program_container, Manual()).commit()
+                tv_snv.text = item.title
+            }
             R.id.om_copy_calculation -> {
                 Copier.mostRecentCalculation(applicationContext)
             }
             R.id.om_copy_answer -> {
                 Copier.mostRecentAnswer(applicationContext)
-            }
-            R.id.om_manual -> {
-                supportFragmentManager.beginTransaction().replace(R.id.program_container, Manual()).commit()
-                tv_snv.text = item.title
             }
         }
         return true

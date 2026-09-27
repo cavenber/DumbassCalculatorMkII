@@ -5,14 +5,14 @@
         android:title="Calculation Logs" />
 
     <item
+        android:id="@+id/om_manual"
+        android:title="Manual" />
+
+    <item
         android:id="@+id/om_copy_calculation"
         android:title="Copy Calculation" />
 
     <item
         android:id="@+id/om_copy_answer"
         android:title="Copy Answer" />
-
-    <item
-        android:id="@+id/om_manual"
-        android:title="Manual" />
 </menu>

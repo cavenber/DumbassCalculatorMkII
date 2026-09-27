@@ -77,8 +77,8 @@ class ExpectedValue : Fragment() {
             {
                 DBHelper(requireContext()).saveAnswer(
                     "Expected Value",
-                    possRecord.joinToString(separator = "; "),
-                    "Expected Value",
+                    possRecord.joinToString(separator = " | "),
+                    "E(x)",
                     etAns.text.toString()
                 )
             }
