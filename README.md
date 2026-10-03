@@ -1,7 +1,7 @@
 # ***Dumbass Calculator Mark II***
 Calculator for Nerds
 ## About
-An evolution to the original **Dumbass Calculator** I made a year ago, this *Mark II* goes beyond a python console app. It features a convenient and easy-to-understand user interface while not impacting the functionalites the original provided. Therefore, this new edition will prove vital to those with intelligence even lower. (or maybe you are just a huge nerd)
+An evolution from the original **Dumbass Calculator** I made a year ago, this *Mark II* goes beyond a python console app. It features a convenient and easy-to-understand user interface while not impacting the functionalites the original provided. Therefore, this new edition will prove vital to those with intelligence even lower. (or maybe you are just a huge nerd)
 ## Installation
 To install ***Dumbass Calculator Mark II*** onto your device. 
 1. Ensure your device is an Android phone/tablet
